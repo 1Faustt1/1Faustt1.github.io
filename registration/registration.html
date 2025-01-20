@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>регистрация</title>
+</head>
+<body>
+    <form class="form">
+        <header class="form__header">
+            <h1 class="form__title">Заявка на вступление</h1>
+            <div class="form__back">
+                <a class="form__back-btn" href="../main/index.html">
+                    <span class="form__back-btn-span">&laquo;</span>
+                </a>
+            </div>
+        </header>
+        <section class="form__body">
+            <fieldset class="form__fieldset">
+                <legend class="form__legend">Ваш никнейм в реальной жизни</legend>
+                <input name="input_name" class="form__input" placeholder="Имя" minlength="2" maxlength="50" required type="text">
+                <input name="input_surname" class="form__input" placeholder="Фамилия" minlength="2" maxlength="50" required type="text">
+            </fieldset>
+            <div class="form__field">
+                <p class="form__text form__text_gender">Ваш пол</p>
+                <input name="radio_gen" id="male" class="form__radio" type="radio" value="male" checked required>
+                <label class="form__text form__text_label" for="male">М</label>
+                <input name="radio_gen" id="female" class="form__radio" type="radio" value="female" required>
+                <label class="form__text form__text_label" for="female">Ж</label>
+            </div>
+            <div class="form__field">
+                <div>
+                    <input type="checkbox" class="form__checkbox" id="18" name="18">
+                    <label class="form__text form__text_label" for="18">Мне есть 18</label>
+                </div>
+                <div>
+                    <input type="checkbox" class="form__checkbox" id="policy" name="policy" required>
+                    <label class="form__text form__text_label" for="policy">Я прочитал условия политики</label>
+                </div>
+            </div>
+            <div class="form__field">
+                <p class="form__text form__text_subject">Ваша дисциплина</p>
+                <select class="form__droplist" name="droplist" id="" required>
+                    <option value="CS2">CS2</option>
+                    <option value="Dota2">Dota 2</option>
+                    <option value="ApexLegends">Apex Legends</option>
+                </select>
+            </div>
+            <div class="form__field">
+                <textarea class="form__textarea" name="textarea" maxlength="1100" id="" placeholder="Дополнительная информация"></textarea>
+            </div>
+            <div class="form__field form__field_center">
+                <button class="form__btn" type="submit">Отправить заявку</button>
+            </div>
+        </section>
+    </form>
+</body>
+</html>
