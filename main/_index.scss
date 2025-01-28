@@ -16,6 +16,10 @@
         justify-content: space-between;
         align-items: center;
         height: 100%;
+
+        @media (max-width: 1030px) {
+            justify-content: space-around;
+        }
     }
 
     &__btn-list {
@@ -53,6 +57,9 @@
     width: 100%;
     height: 100vh;
     background: url("../img/apex-legends-pathfinder-robot-emoticons-saluting-futuristic.jpg") center/cover no-repeat;
+    @media (max-width: 1250px) {
+        background: url("../img/apex-legends-pathfinder-robot-emoticons-saluting-futuristic.jpg") right/cover no-repeat;
+    }
     &__content {
         margin-left: 35px;
         position: absolute;
@@ -66,16 +73,63 @@
         font-size: 100px;
         color: #4e4e4e;
 
+        @media (max-width: 945px) {
+            font-size: 90px;
+        }
+
+        @media (max-width: 825px) {
+            font-size: 70px;
+        }
+
+        @media (max-width: 660px) {
+            font-size: 50px;
+            color: $white;
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 10px;
+            width: fit-content;
+        }
+
+        @media (max-width: 525px) {
+            font-size: 38px;
+        }
     }
 
     &__text {
         font-size: 50px;
         margin-top: 35px;
         color: #4e4e4e;
+
+        @media (max-width: 825px) {
+            font-size: 35px;
+        }
+
+        @media (max-width: 660px) {
+            color: $white;
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 10px;
+        }
+
+        @media (max-width: 525px) {
+            font-size: 25px;
+        }
     }
 
     &__btn {
         @include section-btn;
+
+        @media (max-width: 825px) {
+            height: 50px;
+            width: 200px;
+            line-height: 50px;
+        }
+
+        @media (max-width: 825px) {
+            height: 50px;
+            width: 175px;
+            line-height: 50px;
+        }
     }
 }
 
@@ -88,21 +142,43 @@
 
     &__content {
         display: flex;
+
+        @media (max-width: 735px) {
+            flex-direction: column;
+            align-items: center;
+            gap: 70px;
+        }
     }
 
     &__card {
         width: 25%;
         text-align: center;
+
+        @media (max-width: 735px) {
+            width: 100%;
+        }
     }
 
     &__img {
         height: 130px;
+
+        @media (max-width: 500px) {
+            height: 100px;
+        }
     }
 
     &__text {
         color: $blue;
         font-size: 30px;
         margin-top: 25px;
+
+        @media (max-width: 800px) {
+            font-size: 25px;
+        }
+
+        @media (max-width: 500px) {
+            font-size: 20px;
+        }
     }
 }
 
@@ -128,11 +204,21 @@
     &__card {
 
         display: flex;
+
+        @media (max-width: 1000px) {
+            flex-direction: column;
+            align-items: center;
+        }
+
         &-left {
             width: 50%;
 
             &_reverse {
                 margin-left: 20px;
+
+                @media (max-width: 1000px) {
+                    margin-left: 0;
+                }
             }
         }
 
@@ -142,6 +228,10 @@
 
         &_reverse {
             flex-direction: row-reverse;
+            
+            @media (max-width: 1000px) {
+                flex-direction: column;
+            }
         }
     }
 
@@ -164,6 +254,11 @@
         width: 100%;
         object-fit: cover;
         object-position: left;
+
+        @media (max-width: 1000px) {
+            margin-bottom: 25px;
+            object-position: center;
+        }
     }
 }
 
@@ -183,6 +278,8 @@
     &__text {
         @include section-text;
         text-align: center;
+
+        padding: 5px;
     }
 }
 
@@ -200,6 +297,7 @@
     &__title {
         @include section-title;
         margin: 35px 0;
+        padding: 5px;
     }
 
     &__card {
@@ -236,6 +334,10 @@
         @include section-text;
         font-weight: bold;
         font-size: 35px;
+
+        @media (max-width: 470px) {
+            font-size: 25px;
+        }
         
     }
 
@@ -249,6 +351,10 @@
         text-align: center;
         line-height: 45px;
         text-decoration: none;
+
+        @media (max-width: 470px) {
+            width: 150px;
+        }
 
         &:hover {
             scale: 1.1;
