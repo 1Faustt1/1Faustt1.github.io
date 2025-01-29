@@ -219,17 +219,27 @@
         &-left {
             width: 50%;
 
+            @media (max-width: 1000px) {
+                width: 100%;
+                padding: 10px;
+            }
+
             &_reverse {
                 margin-left: 20px;
 
                 @media (max-width: 1000px) {
                     margin-left: 0;
+                    padding: 10px;
                 }
             }
         }
 
         &-right {
             width: 50%;
+
+            @media (max-width: 1000px) {
+                width: 100%;
+            }
         }
 
         &_reverse {

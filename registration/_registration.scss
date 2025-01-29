@@ -5,6 +5,13 @@
 .form {
     @include container;
     padding: 45px;
+    @media (max-width: 850px) {
+        padding: 15px;
+    }
+
+    @media (max-width: 550px) {
+        padding: 0;
+    }
 
     &__header {
         background-color: $blue;
@@ -133,6 +140,8 @@
 
     &__btn {
         @include section-btn;
+        font-size: 22px;
+        font-weight: bold;
         border: none;
     }
 }

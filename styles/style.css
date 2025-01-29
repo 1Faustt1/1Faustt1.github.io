@@ -228,16 +228,28 @@
 .games__card-left {
   width: 50%;
 }
+@media (max-width: 1000px) {
+  .games__card-left {
+    width: 100%;
+    padding: 10px;
+  }
+}
 .games__card-left_reverse {
   margin-left: 20px;
 }
 @media (max-width: 1000px) {
   .games__card-left_reverse {
     margin-left: 0;
+    padding: 10px;
   }
 }
 .games__card-right {
   width: 50%;
+}
+@media (max-width: 1000px) {
+  .games__card-right {
+    width: 100%;
+  }
 }
 .games__card_reverse {
   flex-direction: row-reverse;
@@ -387,6 +399,16 @@
   margin: 0 auto;
   padding: 45px;
 }
+@media (max-width: 850px) {
+  .form {
+    padding: 15px;
+  }
+}
+@media (max-width: 550px) {
+  .form {
+    padding: 0;
+  }
+}
 .form__header {
   background-color: #79dbf9;
   height: 55px;
@@ -503,6 +525,8 @@
   color: #ffffff;
   background: linear-gradient(225deg, rgb(112, 255, 203) 0%, rgb(121, 219, 249) 100%);
   transition: 0.2s;
+  font-size: 22px;
+  font-weight: bold;
   border: none;
 }
 .form__btn:hover {
