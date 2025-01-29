@@ -1,0 +1,147 @@
+* {
+    user-select: none;
+}
+
+.form {
+    @include container;
+    padding: 45px;
+    @media (max-width: 850px) {
+        padding: 15px;
+    }
+
+    @media (max-width: 550px) {
+        padding: 0;
+    }
+
+    &__header {
+        background-color: $blue;
+        height: 55px;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    &__title {
+        @include section-text;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        line-height: 55px;
+    }
+
+    &__back {
+        height: 55px;
+        width: 55px;
+        background-color: $white;
+        text-align: center;
+        overflow: hidden;
+
+        &-btn {
+            display: block;
+            text-decoration: none;
+            line-height: 55px;
+            font-size: 35px;
+            color: $black;
+
+            &-span {
+                display: block;
+                transition: 0.2s;
+                &:active {
+                    translate: -10px 0;
+                }
+            }
+        }
+    }
+
+    &__body {
+        @include section-box-shadow;
+        width: 100%;
+        padding: 20px;
+    }
+
+    &__field {
+        width: 100%;
+        padding: 25px 0;
+
+        &_center {
+            text-align: center;
+        }
+    }
+
+    &__fieldset {
+        padding: 25px;
+    }
+
+    &__legend {
+        color: $white;
+    }
+
+    &__text {
+
+        color: $white;
+        padding: 25px 0;
+        &_gender {
+
+        }
+
+        &_subject {
+            padding-top: 25px;
+            padding-bottom: 5px;
+        }
+
+        &_label {
+            padding: 0 10px;
+        }
+    }
+
+    &__input {
+        background-color: $gray;
+        color: $white;
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        border: none;
+        border-bottom: solid 1px $white;
+        outline: none;
+        margin: 10px 0;
+
+        &:focus {
+            border-bottom: solid 2px $white;
+            padding-bottom: 14px;
+        }
+    }
+
+    &__radio {
+        cursor: pointer;
+    }
+
+    &__checkbox {
+        cursor: pointer;
+    }
+
+    &__droplist {
+        height: 25px;
+        padding: 0 5px;
+        cursor: pointer;
+    }
+
+    &__textarea {
+        width: 100%;
+        color: $white;
+        height: 230px;
+        background-color: $gray;
+        border: solid 1px $white;
+        outline: none;
+        padding: 15px;
+        font-size: 16px;
+        resize: none
+    }
+
+    &__btn {
+        @include section-btn;
+        font-size: 22px;
+        font-weight: bold;
+        border: none;
+    }
+}
