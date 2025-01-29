@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="05283261-4490-4e26-ab0c-8338523b2a69" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/node_modules/@parcel/watcher/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@parcel/watcher/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/immutable/dist/immutable.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/immutable/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/compile.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/deprecations.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/exception.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/importer.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/legacy/exception.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/legacy/function.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/legacy/importer.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/legacy/options.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/legacy/plugin_this.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/legacy/render.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/logger/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/logger/source_location.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/logger/source_span.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/options.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/util/promise_or.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/value/argument_list.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/value/boolean.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/value/calculation.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/value/color.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/value/function.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/value/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/value/list.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/value/map.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/value/mixin.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/value/number.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/sass/types/value/string.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/source-map-js/lib/source-map-consumer.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/source-map-js/lib/source-map-generator.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/source-map-js/lib/source-node.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/source-map-js/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/source-map-js/source-map.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2sDVkl1oXVPSA7IX43Mo9oGovrZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "ShowUsagesActions.previewPropertyKey": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/Desktop(Файлы)/Уроки с Рудольфом/FrontEnd/RobotBot Site",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="05283261-4490-4e26-ab0c-8338523b2a69" name="Changes" comment="" />
+      <created>1737990283265</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1737990283265</updated>
+      <workItem from="1737990289024" duration="1614000" />
+      <workItem from="1737991915098" duration="1290000" />
+      <workItem from="1737993213703" duration="2585000" />
+      <workItem from="1737999440579" duration="515000" />
+      <workItem from="1738003159940" duration="127000" />
+      <workItem from="1738075778072" duration="3235000" />
+      <workItem from="1738153761074" duration="1257000" />
+      <workItem from="1738155306319" duration="1341000" />
+      <workItem from="1738158864440" duration="224000" />
+      <workItem from="1738159112839" duration="12000" />
+      <workItem from="1738159125964" duration="22000" />
+      <workItem from="1738159185166" duration="20000" />
+      <workItem from="1738159212282" duration="14000" />
+      <workItem from="1738159353834" duration="27000" />
+      <workItem from="1738159382925" duration="14000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
