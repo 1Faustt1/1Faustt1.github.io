@@ -38,6 +38,11 @@
     width: 300px;
     text-decoration: none;
     color: #ffffff;
-
     background: linear-gradient(225deg, rgba(112,255,203,1) 0%, rgba(121,219,249,1) 100%);
+    transition: 0.2s;
+
+    &:hover {
+        scale: 1.1;
+        border-radius: 15px;
+    }
 }
