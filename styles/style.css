@@ -219,7 +219,7 @@
 .games__card {
   display: flex;
 }
-@media (max-width: 1000px) {
+@media (max-width: 650px) {
   .games__card {
     flex-direction: column;
     align-items: center;
@@ -228,7 +228,7 @@
 .games__card-left {
   width: 50%;
 }
-@media (max-width: 1000px) {
+@media (max-width: 650px) {
   .games__card-left {
     width: 100%;
     padding: 10px;
@@ -237,7 +237,7 @@
 .games__card-left_reverse {
   margin-left: 20px;
 }
-@media (max-width: 1000px) {
+@media (max-width: 650px) {
   .games__card-left_reverse {
     margin-left: 0;
     padding: 10px;
@@ -246,7 +246,7 @@
 .games__card-right {
   width: 50%;
 }
-@media (max-width: 1000px) {
+@media (max-width: 650px) {
   .games__card-right {
     width: 100%;
   }
@@ -254,7 +254,7 @@
 .games__card_reverse {
   flex-direction: row-reverse;
 }
-@media (max-width: 1000px) {
+@media (max-width: 650px) {
   .games__card_reverse {
     flex-direction: column;
   }
