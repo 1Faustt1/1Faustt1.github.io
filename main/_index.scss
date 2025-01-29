@@ -1,6 +1,10 @@
 @import "../styles/mixins";
 @import "../styles/variables";
 
+* {
+    scroll-behavior: smooth;
+}
+
 .header {
     position: fixed;
     background-color: #222222;
@@ -358,7 +362,7 @@
 
         &:hover {
             scale: 1.1;
-            transform: skewX(10deg);
+            border-radius: 15px;
         }
     }
 }
