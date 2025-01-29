@@ -464,6 +464,7 @@
   border: none;
   border-bottom: solid 1px #ffffff;
   outline: none;
+  margin: 10px 0;
 }
 .form__input:focus {
   border-bottom: solid 2px #ffffff;
