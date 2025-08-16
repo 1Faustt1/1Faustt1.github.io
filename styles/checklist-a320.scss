@@ -88,22 +88,19 @@
             width: 45%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: nowrap;
             gap: 35px;
         }
 
         &-right {
             width: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            gap: 35px;
         }
-    }
-
-    &__first-left {
-
-    }
-
-    &__second-left {
-
     }
 
     &__subtitle {
@@ -171,6 +168,7 @@
             position: relative;
             text-align: center;
             font-size: 1.1rem;
+            font-style: italic;
 
             &_highlight {
                 color: #fff;

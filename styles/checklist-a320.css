@@ -74,12 +74,17 @@
   width: 45%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: nowrap;
   gap: 35px;
 }
 .checklist__container-right {
   width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 35px;
 }
 .checklist__subtitle {
   color: #fff;
@@ -140,6 +145,7 @@
   position: relative;
   text-align: center;
   font-size: 1.1rem;
+  font-style: italic;
 }
 .checklist__check-subtitle_highlight {
   color: #fff;
