@@ -1,0 +1,192 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.checklist {
+  width: 100%;
+  min-height: 100vh;
+  background: #222222;
+  padding: 20px;
+}
+.checklist__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  /* Основной фон стекла */
+  background: rgba(68, 68, 68, 0.4);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  /* Тень */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  /* Градиентная подсветка (как в iOS) */
+}
+.checklist__content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.03) 50%, transparent 100%);
+  pointer-events: none;
+  border-radius: 16px 16px 0 0;
+  animation: glass-shine 2s infinite alternate;
+}
+.checklist__title {
+  font-family: "SF Pro Display", "Helvetica Neue", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: transparent;
+  background: linear-gradient(90deg, #fff, #a0a0a0);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 16px rgba(255, 255, 255, 0.1);
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.5rem;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+}
+.checklist__title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+}
+.checklist__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.checklist__container-left {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 35px;
+}
+.checklist__container-right {
+  width: 45%;
+}
+.checklist__subtitle {
+  color: #fff;
+  width: 100%;
+  font-weight: 500;
+  border-bottom: 1px solid white;
+  position: relative;
+  margin-bottom: 10px;
+}
+.checklist__check {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  background: rgba(40, 60, 80, 0.3);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  transition: all 0.2s ease;
+  margin-right: 12px;
+  /* Стеклянный эффект при наведении */
+  /* Стиль для активного состояния */
+  /* Фокус-состояние для accessibility */
+}
+.checklist__check:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 8px rgba(76, 149, 175, 0.4);
+}
+.checklist__check:checked {
+  background: rgba(76, 149, 175, 0.5);
+  border-color: #4c95af;
+}
+.checklist__check:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(76, 149, 175, 0.6);
+}
+.checklist__check-label {
+  color: rgb(255, 255, 255);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.checklist__check-label:hover {
+  scale: 1.02;
+  transform: translateY(-1px);
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+}
+.checklist__check-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  margin: 20px 0 15px;
+  padding: 5px 0;
+  position: relative;
+  text-align: center;
+  font-size: 1.1rem;
+}
+.checklist__check-subtitle_highlight {
+  color: #fff;
+}
+.checklist__check-subtitle_highlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+}
+.checklist__check-subtitle_highlight::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+}
+.checklist__check-left {
+  margin-right: auto;
+  white-space: nowrap;
+}
+.checklist__check-right {
+  margin-left: auto;
+  white-space: nowrap;
+}
+.checklist__check-dots {
+  overflow: hidden;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+}
+.checklist__check-dots::after {
+  content: "..........................................................................................................................................................";
+}
+
+@keyframes glass-shine {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+/*# sourceMappingURL=checklist-a320.css.map */

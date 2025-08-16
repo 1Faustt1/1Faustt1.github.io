@@ -1,0 +1,12 @@
+### СТРОКА ЧЕК-ЛИСТА ###
+
+<label class="checklist__check-label" for="check18">
+                            <input type="checkbox" id="check18" class="checklist__check">
+                            <span class="checklist__check-left">NO SMOKING SIGNS</span>
+                            <span class="checklist__check-dots"></span>
+                            <span class="checklist__check-right">ON</span>
+                        </label>
+
+### ПРОМЕЖУТОЧНЫЙ ЗАГОЛОВОК В ЧЕК-ЛИСТЕ ###
+
+                        <h3 class="checklist__check-subtitle checklist__check-subtitle_highlight">Check Weather (ATIS, Flight Services)</h3>
