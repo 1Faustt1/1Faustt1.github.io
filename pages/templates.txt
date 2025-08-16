@@ -10,3 +10,7 @@
 ### ПРОМЕЖУТОЧНЫЙ ЗАГОЛОВОК В ЧЕК-ЛИСТЕ ###
 
                         <h3 class="checklist__check-subtitle checklist__check-subtitle_highlight">Check Weather (ATIS, Flight Services)</h3>
+
+### РАЗДЕЛИТЕЛЬ СТРАНИЦЫ ###
+
+                <div class="checklist__container-sub"></div>
