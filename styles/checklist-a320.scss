@@ -19,6 +19,28 @@ body {
     min-height: 100vh;
     background: #222222;
     padding: 20px;
+    position: relative;
+
+    &__page-btn {
+        display: inline-block;
+        background-color: #222222;
+        border-radius: 30px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 24px;
+        font-weight: bold;
+        text-decoration: none;
+        text-align: center;
+        transition: 0.2s;
+        margin-right: 15px;
+
+        &:hover {
+            scale: 1.05;
+        }
+    }
 
     &__content {
         max-width: 1200px;
@@ -70,9 +92,9 @@ body {
         background-clip: text;
         text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), // Мягкое свечение
         0 0 16px rgba(255, 255, 255, 0.1); // Второй слой свечения
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 20px 0;
         padding-bottom: 0.5rem;
-        position: relative;
+        position: absolute;
         left: 50%;
         transform: translateX(-50%);
         display: inline-block;
@@ -93,6 +115,7 @@ body {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        margin-top: 50px;
 
         &-left {
             width: 45%;
