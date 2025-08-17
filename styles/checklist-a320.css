@@ -21,27 +21,6 @@ body {
   padding: 20px;
   position: relative;
 }
-.checklist__page-btn {
-  display: inline-block;
-  box-sizing: border-box;
-  border: none;
-  background-color: #222222;
-  border-radius: 30px;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  cursor: pointer;
-  color: #fff;
-  font-size: 24px;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
-  transition: 0.2s;
-  margin-right: 15px;
-}
-.checklist__page-btn:hover {
-  transform: scale(1.05);
-}
 .checklist__content {
   max-width: 1200px;
   margin: 0 auto;
