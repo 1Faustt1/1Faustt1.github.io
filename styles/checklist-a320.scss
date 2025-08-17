@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'SF Pro Display', 'Helvetica Neue', sans-serif;
 }
 
 body {
@@ -19,7 +20,7 @@ body {
     min-height: 100vh;
     background: #222222;
     padding: 20px;
-    position: relative;
+
 
     &__content {
         max-width: 1200px;
@@ -61,24 +62,23 @@ body {
     }
 
     &__title {
-        font-family: 'SF Pro Display', 'Helvetica Neue', sans-serif; // Шрифт как в Apple
         font-size: 2.5rem;
         font-weight: 700;
-        color: transparent; // Прозрачный текст для градиента
-        background: linear-gradient(90deg, #fff, #a0a0a0); // Градиентный текст
+        color: transparent;
+        background: linear-gradient(90deg, #fff, #a0a0a0);
         background-size: 200% auto;
-        -webkit-background-clip: text; // Обрезаем фон по тексту
+        -webkit-background-clip: text;
         background-clip: text;
-        text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), // Мягкое свечение
-        0 0 16px rgba(255, 255, 255, 0.1); // Второй слой свечения
+        text-shadow: 0 0 8px
+                            rgba(255, 255, 255, 0.3),
+                            0 0 16px rgba(255, 255, 255, 0.1);
         margin: 0 0 20px 0;
         padding-bottom: 0.5rem;
-        position: absolute;
+        position: relative;
         left: 50%;
         transform: translateX(-50%);
         display: inline-block;
 
-        // Подчеркивание с градиентом
         &::after {
             content: '';
             position: absolute;
@@ -94,7 +94,6 @@ body {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin-top: 50px;
 
         &-left {
             width: 45%;
