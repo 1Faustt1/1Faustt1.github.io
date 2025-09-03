@@ -1,6 +1,28 @@
-@mixin section-width {
+@mixin container-width {
     max-width: 1300px;
+    padding: 0 20px;
     margin: auto;
+    
+    @media (max-width: 1400px) {
+        max-width: 1200px;
+    }
+
+    @media (max-width: 1300px) {
+        max-width: 1100px;
+    }
+
+    @media (max-width: 1200px) {
+        max-width: 1000px;
+    }
+
+    @media (max-width: 1100px) {
+        max-width: 800px;
+    }
+}
+
+@mixin section {
+    width: 100%;
+    min-height: 100vh;
 }
 
 @mixin menu-underline() {
