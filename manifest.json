@@ -1,18 +1,18 @@
 {
   "name": "ФИПИ Банк Заданий",
   "short_name": "ФИПИ",
-  "start_url": "/index.html",
+  "start_url": "/pages/index.html",
   "display": "standalone",
   "background_color": "#0F6D7E",
   "theme_color": "#5EB7C6",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "/materials/logo2.svg",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icon-512.png",
+      "src": "/materials/logo2.svg",
       "sizes": "512x512",
       "type": "image/png"
     }
