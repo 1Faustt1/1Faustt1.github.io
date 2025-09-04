@@ -448,7 +448,6 @@
 
     &__news {
         @include section;
-        padding: 100px 0;
 
         &-container {
             @include container-width;
@@ -459,6 +458,7 @@
             font-size: 110px;
             font-weight: bold;
             color: $black;
+            margin-top: 100px;
             margin-bottom: 60px;
 
             @media (max-width: 800px) {
@@ -499,6 +499,13 @@
             background-color: $white-gray;
             border-radius: 10px;
             box-shadow: 0 4px 4px 0 $black-30;
+            transition: 0.3s ease;
+
+            &:hover {
+                scale: 1.03;
+                transform: translateY(-10px);
+                box-shadow: 0 4px 4px 0 $light-blue;
+            }
 
             &-date {
                 font-size: 15px;
@@ -534,7 +541,8 @@
     padding: 100px 0;
 
     &__partners {
-        @include section;
+        width: 100%;
+        padding: 50px 0;
 
         &-container {
             @include container-width;

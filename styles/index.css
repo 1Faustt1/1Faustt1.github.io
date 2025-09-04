@@ -502,7 +502,6 @@
 .main__news {
   width: 100%;
   min-height: 100vh;
-  padding: 100px 0;
 }
 .main__news-container {
   max-width: 1300px;
@@ -534,6 +533,7 @@
   font-size: 110px;
   font-weight: bold;
   color: #000000;
+  margin-top: 100px;
   margin-bottom: 60px;
 }
 @media (max-width: 800px) {
@@ -574,6 +574,12 @@
   background-color: #F5F5F5;
   border-radius: 10px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
+  transition: 0.3s ease;
+}
+.main__news-card:hover {
+  scale: 1.03;
+  transform: translateY(-10px);
+  box-shadow: 0 4px 4px 0 #5EB7C6;
 }
 .main__news-card-date {
   font-size: 15px;
@@ -604,7 +610,7 @@
 }
 .footer__partners {
   width: 100%;
-  min-height: 100vh;
+  padding: 50px 0;
 }
 .footer__partners-container {
   max-width: 1300px;
