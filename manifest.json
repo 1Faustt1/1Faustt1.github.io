@@ -3,7 +3,7 @@
   "short_name": "ФИПИ",
   "start_url": "/pages/index.html",
   "display": "standalone",
-  "background_color": "#0F6D7E",
+  "background_color": "#ffffff",
   "theme_color": "#5EB7C6",
   "icons": [
     {
