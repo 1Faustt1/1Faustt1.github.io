@@ -46,11 +46,109 @@
     <main class="main">
         <section class="main__selector">
             <div class="main__selector-container">
-                <p class="main__selector-text main__selector-text__left">Открытый банк заданий ОГЭ</p>
-                <span></span>
-                <p class="main__selector-text main__selector-text__right">Тематические банки оценочных средств</p>
+                <input type="radio" id="fir" name="bank" class="main__selector-radio main__selector-radio_left" checked="checked">
+                <label class="main__selector-label main__selector-label_left" for="fir">Открытый банк заданий ОГЭ</label>
+                <span class="main__selector-line">|</span>
+                <input type="radio" id="sec" name="bank" class="main__selector-radio main__selector-radio_right">
+                <label class="main__selector-label main__selector-label_right" for="sec">Тематические банки оценочных средств</label>
+            </div>
+
+            <div class="main__subjects">
+                <div class="main__subjects-page main__subjects-page_oge">
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Английский язык</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/english.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Биология</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/english.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">География</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/english.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Информатика</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/english.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Испанский язык</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/spanish.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">История</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/english.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Литература</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/english.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Математика</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/english.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Немецкий язык</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/german.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Обществознание</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/english.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Русский язык</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/english.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Физика</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/english.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Французский язык</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/french.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Химия</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/english.svg" alt="">
+                    </div>
+                </div>
+                <div class="main__subjects-page main__subjects-page_thematic">
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Банк заданий для оценки естественнонаучной грамотности</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/english.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Банк заданий для оценки читательской грамотности</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/french.svg" alt="">
+                    </div>
+                    <div class="main__subjects-page-card">
+                        <div class="main__subjects-page-card-header">Открытый банк оценочных средств по русскому языку</div>
+                        <img class="main__subjects-page-card-img" src="../materials/oge-subject/english.svg" alt="">
+                    </div>
+                </div>
             </div>
         </section>
     </main>
+    <script>
+        const radios = document.querySelectorAll('input[name="bank"]');
+
+        const pageOge = document.querySelector('.main__subjects-page_oge');
+        const pageThematic = document.querySelector('.main__subjects-page_thematic');
+
+        radios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.id === 'fir') {
+                    pageOge.style.display = 'block';
+                    pageThematic.style.display = 'none';
+                } else if (radio.id === 'sec') {
+                    pageOge.style.display = 'none';
+                    pageThematic.style.display = 'block';
+                }
+            });
+        });
+
+        // pageOge.style.display = 'none'
+        pageThematic.style.display = 'none';
+    </script>
 </body>
 </html>

@@ -235,4 +235,116 @@
   }
 }
 
+.main {
+  margin-top: 90px;
+}
+.main__selector {
+  width: 100%;
+  min-height: 100vh;
+}
+.main__selector-container {
+  max-width: 1300px;
+  padding: 0 20px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 1400px) {
+  .main__selector-container {
+    max-width: 1200px;
+  }
+}
+@media (max-width: 1300px) {
+  .main__selector-container {
+    max-width: 1100px;
+  }
+}
+@media (max-width: 1200px) {
+  .main__selector-container {
+    max-width: 1000px;
+  }
+}
+@media (max-width: 1100px) {
+  .main__selector-container {
+    max-width: 800px;
+  }
+}
+.main__selector-radio {
+  display: none;
+}
+.main__selector-radio:checked + .main__selector-label {
+  color: #0F6D7E;
+  text-shadow: 0 0 10px #5EB7C6;
+  position: relative;
+}
+.main__selector-radio:checked + .main__selector-label::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -4px;
+  width: 170px;
+  height: 2px;
+  background-color: #0F6D7E;
+  box-shadow: 0 0 10px #5EB7C6;
+  opacity: 0.2;
+  border-radius: 20px;
+}
+.main__selector-label {
+  transition: 0.2s;
+  font-size: 25px;
+}
+.main__selector-label:hover {
+  scale: 1.03;
+  color: #0F6D7E;
+}
+.main__selector-line {
+  font-size: 35px;
+  color: #0F6D7E;
+  text-shadow: 0 0 10px #5EB7C6;
+}
+.main__subjects {
+  max-width: 1500px;
+  height: 100%;
+  margin: 60px auto 0 auto;
+}
+.main__subjects-page {
+  width: 100%;
+  height: 100%;
+}
+.main__subjects-page_oge, .main__subjects-page_thematic {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 270px);
+  justify-content: center;
+  gap: 20px;
+}
+.main__subjects-page-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 270px;
+  height: 225px;
+  background: linear-gradient(180deg, rgb(15, 109, 126) 0%, rgb(94, 183, 198) 100%);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 30px;
+  padding: 15px;
+  transition: 0.2s ease-in-out;
+}
+.main__subjects-page-card-header {
+  color: #ffffff;
+  width: 100%;
+  font-size: 33px;
+  text-shadow: 0 6px 6px rgba(0, 0, 0, 0.3);
+}
+.main__subjects-page-card-img {
+  width: 105px;
+  height: 105px;
+  text-align: right;
+}
+.main__subjects-page-card:hover {
+  scale: 1.03;
+}
+
 /*# sourceMappingURL=oge-subject-select.css.map */

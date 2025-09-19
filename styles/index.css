@@ -603,11 +603,6 @@
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
   transition: 0.3s ease;
 }
-.main__news-card:hover {
-  scale: 1.03;
-  transform: translateY(-10px);
-  box-shadow: 0 4px 4px 0 #5EB7C6;
-}
 .main__news-card-date {
   font-size: 15px;
   font-family: "PT-Sans-700", sans-serif;
