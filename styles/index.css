@@ -252,7 +252,6 @@
 }
 .main__functions-cards {
   max-width: 1300px;
-  padding: 0 20px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -280,7 +279,7 @@
     max-width: 800px;
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 750px) {
   .main__functions-cards {
     justify-content: center;
   }
@@ -330,7 +329,6 @@
 }
 .main__about-container {
   max-width: 1300px;
-  padding: 0 20px;
   margin: auto;
 }
 @media (max-width: 1400px) {
@@ -452,7 +450,6 @@
 }
 .main__about-advantages-container {
   max-width: 1300px;
-  padding: 0 20px;
   margin: auto;
   margin-top: 20px;
   display: flex;
@@ -532,7 +529,6 @@
 }
 .main__news-container {
   max-width: 1300px;
-  padding: 0 20px;
   margin: auto;
 }
 @media (max-width: 1400px) {
@@ -636,7 +632,6 @@
 }
 .footer__partners-container {
   max-width: 1300px;
-  padding: 0 20px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -695,7 +690,6 @@
 }
 .footer__copyright-container {
   max-width: 1300px;
-  padding: 0 20px;
   margin: auto;
   text-align: center;
 }
