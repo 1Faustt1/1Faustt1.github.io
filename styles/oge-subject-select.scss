@@ -51,7 +51,7 @@
 
         &-label {
             transition: 0.2s;
-            font-size: 25px;
+            font-size: 35px;
             &:hover {
                 scale: 1.03;
                 color: $dark-blue;
@@ -68,25 +68,32 @@
 
 
         &-line {
-            font-size: 35px;
-            color: $dark-blue;
-            text-shadow: 0 0 10px $light-blue;
+            font-size: 45px;
         }
     }
 
     &__subjects {
-        max-width: 1500px;
+        @include container-width;
         height: 100%;
         margin: 60px auto 0 auto;
 
         &-page {
             width: 100%;
             height: 100%;
-            &_oge, &_thematic {
+            &_oge {
                 display: grid;
-                grid-template-columns: repeat(auto-fill, 270px);
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(4, 1fr);
                 justify-content: center;
-                gap: 20px;
+                justify-items: center;
+                gap: 30px;
+            }
+
+            &_thematic {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                justify-content: center;
+                justify-items: center;
             }
 
             &-card {
@@ -94,28 +101,103 @@
                 flex-direction: column;
                 justify-content: space-between;
                 align-items: flex-end;
-                width: 270px;
+                position: relative;
+                width: 280px;
                 height: 225px;
                 background: linear-gradient(180deg,rgba(15, 109, 126, 1) 0%, rgba(94, 183, 198, 1) 100%);
                 box-shadow: 0 4px 4px $black-30;
                 border-radius: 30px;
                 padding: 15px;
                 transition: 0.2s ease-in-out;
+
+                &_thematic {
+                    width: 400px;
+                }
+
                 &-header {
                     color: $white;
-                    width: 100%;
-                    font-size: 33px;
+                    width: 90%;
+                    font-size: 35px;
                     text-shadow: 0 6px 6px $black-30;
+                    position: absolute;
+                    top: 15px;
+                    left: 15px;
+
+                    &_thematic {
+                        font-size: 30px;
+                    }
                 }
 
                 &-img {
                     width: 105px;
                     height: 105px;
-                    text-align: right;
+                    position: absolute;
+                    bottom: 15px;
+                    right: 15px;
                 }
 
                 &:hover {
                     scale: 1.03;
+                }
+            }
+        }
+    }
+
+    &__links {
+        @include section;
+        margin-top: 100px;
+        min-height: auto;
+        padding-bottom: 100px;
+
+        &-cards {
+            @include container-width;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-card {
+            width: 100%;
+            padding: 15px;
+            position: relative;
+
+            &-header {
+                font-size: 45px;
+                color: $dark-blue;
+                font-family: "PT-Sans-700", serif;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            &-text {
+                font-size: 24px;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -4px;
+                width: 100%;
+                height: 2px;
+                background-color: $black-30;
+                border-radius: 20px;
+            }
+
+            &:nth-of-type(1) {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    top: 0;
+                    width: 100%;
+                    height: 2px;
+                    background-color: $black-30;
+                    border-radius: 20px;
                 }
             }
         }
