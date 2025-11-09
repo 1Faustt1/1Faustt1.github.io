@@ -238,16 +238,19 @@
 .main {
   width: 100%;
   min-height: 100vh;
+  padding: 20px 0;
 }
 .main__gallery {
   width: 100%;
   min-height: 100vh;
+  padding: 20px 0;
   position: relative;
   background: url("../materials/1section-bg.png") center/cover no-repeat;
 }
 .main__functions {
   width: 100%;
   min-height: 100vh;
+  padding: 20px 0;
   padding: 100px 0;
 }
 .main__functions-cards {
@@ -325,6 +328,7 @@
 .main__about {
   width: 100%;
   min-height: 100vh;
+  padding: 20px 0;
   background-color: #5EB7C6;
   padding: 100px 0;
 }
@@ -529,6 +533,7 @@
 .main__news {
   width: 100%;
   min-height: 100vh;
+  padding: 20px 0;
 }
 .main__news-container {
   max-width: 1300px;

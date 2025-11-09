@@ -23,6 +23,7 @@
 @mixin section {
     width: 100%;
     min-height: 100vh;
+    padding: 20px 0;
 }
 
 @mixin menu-underline() {
