@@ -10,7 +10,7 @@
     <title>ФИПИ Информатика</title>
 </head>
 <body>
-    <header class="header">
+<header class="header">
         <input class="header__burger-checkbox" type="checkbox" id="menu-checkbox">
         <div class="header__container">
             <a class="header__logo" href="index.html">
@@ -53,28 +53,46 @@
 
         <section class="main__headbar">
             <div class="main__headbar-container">
-                <input class="main__headbar-filter" type="checkbox">
+                <button class="main__headbar-filter"><img class="main__headbar-filter-img" src="../materials/filterICO.svg"></button>
                 <div class="main__headbar-pages">
-                    <a class="main__headbar-pages-page" href="">1</a>
-                    <a class="main__headbar-pages-page" href="">2</a>
-                    <a class="main__headbar-pages-page" href="">3</a>
-                    <a class="main__headbar-pages-page" href="">4</a>
-                    <a class="main__headbar-pages-page" href="">5</a>
-                    <a class="main__headbar-pages-page" href="">6</a>
-                    <a class="main__headbar-pages-page" href="">7</a>
-                    <a class="main__headbar-pages-page" href="">8</a>
-                    <a class="main__headbar-pages-page" href="">9</a>
-                    <a class="main__headbar-pages-page" href="">10</a>
+                    <button class="main__headbar-pages-page">1</button>
+                    <button class="main__headbar-pages-page">2</button>
+                    <button class="main__headbar-pages-page">3</button>
+                    <button class="main__headbar-pages-page">4</button>
+                    <button class="main__headbar-pages-page">5</button>
+                    <button class="main__headbar-pages-page">6</button>
+                    <button class="main__headbar-pages-page">7</button>
+                    <button class="main__headbar-pages-page">8</button>
+                    <button class="main__headbar-pages-page">9</button>
+                    <button class="main__headbar-pages-page">10</button>
                 </div>
-                <input class="main__headbar-generator" type="checkbox">
+                <button class="main__headbar-generator"><img class="main__headbar-generator-img" src=""></button>
             </div>
         </section>
 
         <section class="main__tasks">
-            <div class="main__tasks-container">
-
+            <div id="tasks-container" class="main__tasks-container">
+                <div id="template-card" class="main__tasks-card hidden">
+                    <h1 class="main__tasks-card-title"></h1>
+                    <p class="main__tasks-card-description"></p>
+                    <div class="main__tasks-card-form">
+                        <input class="main__tasks-card-input" type="text" placeholder="Введите ответ">
+                        <button class="main__tasks-card-btn">Ответить</button>
+                    </div>
+                    <div class="main__tasks-card-footer">
+                        <div class="main__tasks-card-footer-left">
+                            <p id="task-id" class="main__tasks-card-footer-id">Номер: 000fff</p>
+                            <p id="task-status" class="main__tasks-card-footer-status">Статус задания: <span class="main__tasks-card-footer-status-color">НЕ РЕШЕНО</span></p>
+                        </div>
+                        <div class="main__tasks-card-footer-right">
+                            <button class="main__tasks-card-footer-info">i</button>
+                            <button class="main__tasks-card-footer-favorite"><img class="main__tasks-card-footer-favorite-img" src="../materials/favoriteOFF.svg"></button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
+    <script src="../scripts/main.js"></script>
 </body>
 </html>

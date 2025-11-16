@@ -10,6 +10,10 @@
     padding: 0;
 }
 
+.hidden {
+    display: none;
+}
+
 .header {
     @include header-menu;
 }
@@ -52,9 +56,6 @@
 
             }
         }
-        &-filter {
-
-        }
         &-pages {
             display: flex;
             gap: 10px;
@@ -62,9 +63,9 @@
                 display: inline-block;
                 width: 40px;
                 height: 40px;
-                background-color: $gray;
+                background-color: $white;
                 border-radius: 100%;
-                border: 3px solid $dark-blue;
+                border: 2px solid $dark-blue;
                 text-align: center;
                 line-height: 35px;
                 text-decoration: none;
@@ -78,17 +79,200 @@
                     color: $white;
 
                 }
+
+                &:active {
+                    @include active;
+                }
             }
         }
+
+        &-filter {
+            border-radius: 50%;
+            border: 3px solid $dark-blue;
+            background-color: transparent;
+            color: $dark-blue;
+            outline: none;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            transition: 0.3s;
+
+            &-img {
+                width: 100%;
+                height: 100%;
+            }
+
+            &:hover {
+                background-color: $dark-blue;
+                color: $white;
+            }
+
+            &:active {
+                @include active;
+            }
+        }
+
         &-generator {
 
+            transition: 0.3s;
+
+            &-img {
+
+            }
+
+            &:active {
+                @include active;
+            }
         }
     }
 
     &__tasks {
         width: 100%;
+
         &-container {
             @include container-width;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        &-card {
+            position: relative;
+            background-color: $dark-gray;
+            padding: 10px 15px $card-footer-height 15px;
+            border-radius: 15px;
+            &-title {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            &-description {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            &-form {
+                display: flex;
+                gap: 10px;
+                margin: 25px 0;
+            }
+
+            &-input {
+                width: 220px;
+                height: 30px;
+                border: 2px solid $dark-blue;
+                background-color: $white;
+                outline: none;
+                border-radius: 15px 0 0 15px;
+                padding-left: 10px;
+                line-height: 25px;
+                font-size: 16px;
+            }
+
+            &-btn {
+                width: 100px;
+                height: 30px;
+                border: 2px solid $dark-blue;
+                background-color: $white;
+                color: $black-55;
+                outline: none;
+                border-radius: 0 15px 15px 0;
+                text-align: center;
+                transition: 0.3s;
+                font-size: 16px;
+
+                &:hover {
+                    background-color: $dark-blue;
+                    color: $white;
+                }
+
+                &:active {
+                    @include active;
+                }
+            }
+
+            &-footer {
+                width: 100%;
+                height: $card-footer-height;
+                position: absolute;
+                border-radius: 0 0 15px 15px;
+                bottom: 0;
+                left: 0;
+                background-color: $light-blue-30;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 15px;
+
+                &-id {
+                    font-weight: 700;
+                    color: $dark-blue;
+                }
+
+                &-status {
+                    font-weight: 700;
+                    color: $dark-blue;
+
+                    &-color {
+                        color: $dark-blue;
+                    }
+                }
+
+                &-info {
+                    border-radius: 50%;
+                    border: 3px solid $dark-blue;
+                    background-color: transparent;
+                    color: $dark-blue;
+                    outline: none;
+                    width: 30px;
+                    height: 30px;
+                    font-size: 18px;
+                    font-weight: 700;
+                    text-align: center;
+                    transition: 0.3s;
+
+                    &:hover {
+                        background-color: $dark-blue;
+                        color: $white;
+                    }
+
+                    &:active {
+                        @include active;
+                    }
+                }
+
+                &-favorite {
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                    width: 30px;
+                    height: 30px;
+                    transition: 0.3s;
+
+                    &-img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    &:hover {
+
+                    }
+
+                    &:active {
+                        @include active;
+                    }
+                }
+
+                &-left {
+                    display: flex;
+                    gap: 20px;
+                }
+
+                &-right {
+                    display: flex;
+                    gap: 20px;
+                }
+            }
         }
     }
 }
