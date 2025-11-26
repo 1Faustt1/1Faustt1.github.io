@@ -49,12 +49,21 @@ const informaticsTasks = [
 const englishTasks = [
     {
         subject: "Английский язык",
-        number_of_oge: "1",
+        number_of_oge: "38",
         id: "F8E641",
-        name: "123123.",
-        description: "\nВ одной из кодировок Unicode каждый символ кодируется 16 битами.\nУченица написала текст (в нём нет лишних пробелов):\n\n«Предметы мебели: пуф, стул, диван, кресло, кровать, тумбочка, оттоманка, полукресло, раскладушка».\n\nУченица удалила из списка название одного предмета, а также лишние запятую и пробел – два пробела не должны идти подряд.\nПри этом размер нового предложения в данной кодировке оказался на 20 байт меньше, чем размер исходного предложения. Напишите в ответе удалённое название предмета.",
-        option: "input",
-        correct_answer: "тумбочка",
+        name: "Дайте развернутый ответ.",
+        description: "\n" +
+            "Task 3. You are going to give a talk about your school. You will have to start in 1.5 minutes and speak for not more than 2 minutes (10–12 sentences). Remember to say:\n" +
+            "\n" +
+            "what your typical school day is like;\n" +
+            "what your favourite subject is, and why;\n" +
+            "what you like most about your school;\n" +
+            "what your attitude to your school life is. \n" +
+            " \n" +
+            "\n" +
+            "You have to talk continuously.",
+        option: "none",
+        correct_answer: "",
         is_favorite: false,
         is_solved: false
     },
@@ -96,17 +105,22 @@ const englishTasks = [
 
 const tasksData = []
 const subjectId = new URLSearchParams(window.location.search).get('subjectId')
+const subjectTitle = document.getElementById("subjectTitle");
+
 switch (subjectId) {
     case "ENG001":
         tasksData.push(...englishTasks)
+        subjectTitle.innerHTML = englishTasks[0].subject
         break
     case "INF004":
         tasksData.push(...informaticsTasks)
+        subjectTitle.innerHTML = informaticsTasks[0].subject
         break
     default:
         break;
 
 }
+
 const templateCard = document.getElementById("template-card")
 const tasksContainer = document.getElementById("tasks-container")
 const tasksCount = tasksData.length
@@ -118,5 +132,10 @@ for (let i = 0; i < tasksCount; i++) {
     card.childNodes[3].innerHTML = tasksData[i].description
     card.childNodes[7].childNodes[1].childNodes[1].innerHTML = "Номер: " + tasksData[i].id
     tasksContainer.appendChild(card)
-    console.log(card.childNodes)
+    // console.log(card.childNodes)
 }
+
+tasksContainer.removeChild(templateCard)
+
+const answerInputs = document.getElementsByClassName("main__tasks-card-input")
+const answerButtons = document.getElementsByClassName("main__tasks-card-btn")
