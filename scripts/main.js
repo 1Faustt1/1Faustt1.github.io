@@ -337,12 +337,24 @@ const tasksCount = currentSubjectTasks.length // информация по ко�
 
 for (let i = 0; i < tasksCount; i++) { // пока все задания не обработаются цикл работает
     const card = templateCard.cloneNode(true) // копируется шаблон карточки
+    const input = card.querySelector('.main__tasks-card-input');
+    const btn = card.querySelector('.main__tasks-card-btn');
+
     card.classList.remove("hidden")
     card.childNodes[1].innerHTML = currentSubjectTasks[i].name // вписывается заголовок
     card.childNodes[3].innerHTML = currentSubjectTasks[i].description // вписывается описание (само задание)
     card.childNodes[7].childNodes[1].childNodes[1].innerHTML = "Номер: " + currentSubjectTasks[i].id // вписывается идентификационный номер задания
     tasksContainer.appendChild(card) // готовая карточка добавляется в блок
     // console.log(card.childNodes)
+
+    if (currentSubjectTasks[i].option === "none") {
+        // if (input) input.remove(); если делать ремув, то элементы сбиваются
+        if (input) input.style.display = "none"
+        btn.textContent = "Изменить ответ";
+        btn.classList.add("main__tasks-card-btn_none")
+    } else if (currentSubjectTasks[i].options === "select") {
+
+    }
 }
 
 tasksContainer.removeChild(templateCard) // со страницы убирается шаблон карточки
@@ -350,18 +362,21 @@ tasksContainer.removeChild(templateCard) // со страницы убирает
 const answerInputs = document.getElementsByClassName("main__tasks-card-input") // по классу находим поле ввода карточки
 const answerButtons = document.getElementsByClassName("main__tasks-card-btn") // по классу находим кнопку отправки ответа
 const inputValues = new Array(answerInputs.length).fill('')
+const taskStatus = document.getElementsByClassName("main__tasks-card-footer-status-color")
 
 for (let i = 0; i < answerInputs.length; i++) {
     console.log(answerInputs[i])
-    answerInputs[i].addEventListener('change', (event) => {
+    answerInputs[i].addEventListener('input', (event) => { // change изменяется когда input теряет фокус
         inputValues[i] = event.target.value
         console.log(inputValues)
     })
     answerButtons[i].addEventListener('click', (event) => {
         if (inputValues[i].toLowerCase().trim() === currentSubjectTasks[i].correct_answer.toLowerCase().trim()) {
-            alert("КЛАААС")
+            taskStatus[i].textContent = "ВЕРНО"
+            taskStatus[i].style.color = "green";
         } else {
-            alert("ЛОХ")
+            taskStatus[i].textContent = "НЕ ВЕРНО"
+            taskStatus[i].style.color = "red";
         }
     })
 }
