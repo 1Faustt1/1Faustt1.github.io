@@ -255,7 +255,7 @@ const tasksDataJson = `{
       "id": "F8E641",
       "subject_id": "ENG001",
       "name": "Дайте развернутый ответ.",
-      "description": "Task 3. You are going to give a talk about your school. You will have to start in 1.5 minutes and speak for not more than 2 minutes (10–12 sentences). Remember to say:\what your typical school day is like;\what your favourite subject is, and why;\what you like most about your school;\what your attitude to your school life is.\You have to talk continuously.",
+      "description": "Task 3. You are going to give a talk about your school. You will have to start in 1.5 minutes and speak for not more than 2 minutes (10–12 sentences). Remember to say: what your typical school day is like; what your favourite subject is, and why; what you like most about your school; what your attitude to your school life is. You have to talk continuously.",
       "additional_description_table": null,
       "media": "",
       "option": "none",
@@ -269,59 +269,7 @@ const tasksDataJson = `{
       "id": "303746",
       "subject_id": "ENG001",
       "name": "Установите соответствие и впишите ответ.",
-      "description": "
-Вы проводите информационный поиск в ходе выполнения проектной работы. Определите, в каком из текстов A–F содержатся ответы на интересующие Вас вопросы 1–7. Один из вопросов останется без ответа. Занесите Ваши ответы в таблицу.
-
-1. 
- 
-
-Why was Vladivostok called so?
-
-2. 
- 
-
-Who founded the city of Vladivostok?
-
-3. 
-Why has the city quickly become important?
-
-4. 
- 
-
-What is the climate of the city area?
-
-5. 
-How is it possible to travel to the city?
-
-6. 
- 
-
-What are the city sights one should visit?
-
-7. 
- 
-
-What makes Vladivostok buildings unique?
-
-A. 
-Vladivostok is located at the same latitude as Russian subtropical sea resort Sochi, but its average annual temperature is nearly 10 degrees lower because of the Siberian Anticyclone. It brings cold winds from Yakutia for much of the winter season. Thus, the winter in Vladivostok is typical of Manchuria – it is cold, clear, and very windy. The snow is rare and, in some years, may not fall at all. The summer is more comfortable, warm, wet, and partly cloudy.
-
-B. 
-The first thing that will catch the eye of every tourist right from the platform of the railway station is a unique building of the terminal of the Trans-Siberian Railway. It was built more than a century ago. The sea terminal, located nearby, is also a must-see while going on a tour of Vladivostok. Like other port cities, Vladivostok celebrates the Russian fleet with a number of museums. No doubt, the legendary S-56 submarine which played a great role in the Great Patriotic War is worth visiting.
-
-C. 
-The most important city in the Russian Far East, Vladivostok is known as the town of sailors. It was founded about 160 years ago as a small military port. Despite being one of the youngest Russian cities, Vladivostok managed to find its way to the list of the best Russian cities to visit. Its name came from the combination of two words, vladet (meaning “to own”) and vostok (meaning “east”), helping anyone who wants to find Vladivostok on a map.
-
-D. 
-The Trans-Siberian Railway was built to connect Asian and European Russia. The final stop on the way, or the first if passengers are travelling west, is in Vladivostok. The city’s strategic location and port led to the fact that Vladivostok has eventually become a large and busy centre in North-East Asia. After its foundation in 1860 as a military post, Vladivostok soon became the centre of international commerce and development.
-
-E. 
-Despite the fact that Vladivostok has always been a Russian city, elements of the Chinese and Japanese architecture borrowed from the city’s nearest neighbours can be seen even during a simple walk down the city streets. At the same time, the architecture of Vladivostok leaves no doubt that this is a Russian city. So, this unique place combines a lot of different features.
-
-F. 
-As a rule, people prefer to spend a couple of days exploring Vladivostok within their long tour to the Far East, instead of considering the city as an independent holiday destination. They may fly to Vladivostok or go by rail choosing the famous Trans-Siberian express which is very popular with tourists. The Trans-Siberian Railway is the longest railway route in the world. So, going by train to Vladivostok can easily become a journey of a lifetime.
-
-Запишите в таблицу выбранные цифры под соответствующими буквами.",
+      "description": "Вы проводите информационный поиск в ходе выполнения проектной работы. Определите, в каком из текстов A–F содержатся ответы на интересующие Вас вопросы 1–7. Один из вопросов останется без ответа. Занесите Ваши ответы в таблицу. 1. Why was Vladivostok called so? 2. Who founded the city of Vladivostok? 3. Why has the city quickly become important? 4. What is the climate of the city area? 5. How is it possible to travel to the city? 6. What are the city sights one should visit? 7. What makes Vladivostok buildings unique? A. Vladivostok is located at the same latitude as Russian subtropical sea resort Sochi, but its average annual temperature is nearly 10 degrees lower because of the Siberian Anticyclone. It brings cold winds from Yakutia for much of the winter season. Thus, the winter in Vladivostok is typical of Manchuria – it is cold, clear, and very windy. The snow is rare and, in some years, may not fall at all. The summer is more comfortable, warm, wet, and partly cloudy. B. The first thing that will catch the eye of every tourist right from the platform of the railway station is a unique building of the terminal of the Trans-Siberian Railway. It was built more than a century ago. The sea terminal, located nearby, is also a must-see while going on a tour of Vladivostok. Like other port cities, Vladivostok celebrates the Russian fleet with a number of museums. No doubt, the legendary S-56 submarine which played a great role in the Great Patriotic War is worth visiting. C. The most important city in the Russian Far East, Vladivostok is known as the town of sailors. It was founded about 160 years ago as a small military port. Despite being one of the youngest Russian cities, Vladivostok managed to find its way to the list of the best Russian cities to visit. Its name came from the combination of two words, vladet (meaning “to own”) and vostok (meaning “east”), helping anyone who wants to find Vladivostok on a map. D. The Trans-Siberian Railway was built to connect Asian and European Russia. The final stop on the way, or the first if passengers are travelling west, is in Vladivostok. The city’s strategic location and port led to the fact that Vladivostok has eventually become a large and busy centre in North-East Asia. After its foundation in 1860 as a military post, Vladivostok soon became the centre of international commerce and development. E. Despite the fact that Vladivostok has always been a Russian city, elements of the Chinese and Japanese architecture borrowed from the city’s nearest neighbours can be seen even during a simple walk down the city streets. At the same time, the architecture of Vladivostok leaves no doubt that this is a Russian city. So, this unique place combines a lot of different features. F. As a rule, people prefer to spend a couple of days exploring Vladivostok within their long tour to the Far East, instead of considering the city as an independent holiday destination. They may fly to Vladivostok or go by rail choosing the famous Trans-Siberian express which is very popular with tourists. The Trans-Siberian Railway is the longest railway route in the world. So, going by train to Vladivostok can easily become a journey of a lifetime. Запишите в таблицу выбранные цифры под соответствующими буквами.",
       "additional_description_table": null,
       "media": "",
       "option": "select",
@@ -335,12 +283,7 @@ As a rule, people prefer to spend a couple of days exploring Vladivostok within 
       "id": "075DF0",
       "subject_id": "ENG001",
       "name": "Дайте развернутый ответ.",
-      "description": "
-Task 2. You are going to take part in a telephone survey. You have to answer six questions. Give full answers to the questions.
-
- 
-
-Remember that you have 40 seconds to answer each question.",
+      "description": "Task 2. You are going to take part in a telephone survey. You have to answer six questions. Give full answers to the questions. Remember that you have 40 seconds to answer each question.",
       "additional_description_table": null,
       "media": "https://oge.fipi.ru/docs/8BBD5C99F37898B6402964AB11955663/questions/122837638FFB89424179D39AB75E51F2/img1_1490011893.mp3",
       "option": "none",
@@ -363,7 +306,7 @@ Remember that you have 40 seconds to answer each question.",
       "is_solved": false
     }
   ]
-}`
+  }`;
 
 const tasksData = JSON.parse(tasksDataJson).tasks // пустой массив в который потом добавляются задачи согласно предмету
 const subjectId = new URLSearchParams(window.location.search).get('subjectId') // из ссылки берется параметр subjectId
@@ -371,6 +314,7 @@ const subjectTitle = document.getElementById("subjectTitle"); // по id бер�
 const currentSubjectTasks = tasksData.filter((task) => {
     return task.subject_id === subjectId
 })
+
 subjectTitle.innerHTML = currentSubjectTasks[0].subject;
 
 // switch (subjectId) { // проверятся значение subjectId
