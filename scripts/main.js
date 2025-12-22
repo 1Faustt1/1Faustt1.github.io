@@ -186,7 +186,6 @@
 // import {tasksDataJson} from "../json/oge/tasks";
 //
 // const tasksData2 = tasksDataJson
-// console.log(tasksData2);
 
 const tasksDataJson = `{
   "tasks": [
@@ -308,14 +307,208 @@ const tasksDataJson = `{
   ]
   }`;
 
-const tasksData = JSON.parse(tasksDataJson).tasks // пустой массив в который потом добавляются задачи согласно предмету
+function syncWithLS(tasks, elems) {
+    // let savedTasks = []
+    // try {
+    //     savedTasks = JSON.parse(localStorage.getItem('tasks')) ?? []
+    // } catch (e) {
+    //     console.error(e)
+    // }
+    // if (!savedTasks) {
+    //     return tasks;
+    // }
+    // // const savedTasks = JSON.parse(localStorage.getItem('tasks'))
+    // return [...tasks].map((task, i) => {
+    //     const savedTask = savedTasks.find(s => s.id === task.id)
+    //     if (savedTask) {
+    //         const resultTask = {
+    //             ...structuredClone(task),
+    //             is_solved: savedTask.is_solved,
+    //             is_favorite: savedTask.is_favorite,
+    //         }
+    //         updateIsSolvedUI(elems[i], resultTask.is_solved)
+    //         return resultTask
+    //     }
+    //     return structuredClone(task)
+    // })
+
+    let savedTasks = [];
+    try {
+        savedTasks = JSON.parse(localStorage.getItem('tasks')) ?? [];
+    } catch (e) {
+        console.error(e);
+    }
+
+    if (!savedTasks.length) return tasks;
+
+    // Перебираем массив карточек и обновляем поля is_solved и is_favorite
+    tasks.forEach((task, i) => {
+        const savedTask = savedTasks.find(s => s.id === task.id);
+        if (savedTask) {
+            task.is_solved = savedTask.is_solved;
+            task.is_favorite = savedTask.is_favorite;
+            // Обновляем UI
+            if (elems && elems[i]) {
+                updateIsSolvedUI(elems[i], task.is_solved);
+            }
+        }
+    });
+
+    return tasks; // возвращаем сам массив, ссылки остаются те же
+}
+
+function updateTask(tasks, task) {
+    let savedTasks = []
+    try {
+        savedTasks = JSON.parse(localStorage.getItem('tasks')) ?? []
+    } catch (e) {
+        console.error(e)
+    }
+    const tasksWithoutCurrent = savedTasks.filter(s => s.id !== task.id)
+
+    const taskToSave = {
+        id: task.id,
+        is_solved: task.is_solved,
+        is_favorite: task.is_favorite,
+    }
+
+    tasksWithoutCurrent.push(taskToSave)
+    localStorage.setItem('tasks', JSON.stringify(tasksWithoutCurrent))
+    syncWithLS(tasks, taskStatuses)
+    // const savedTasks = JSON.parse(localStorage.getItem('tasks'))
+}
+
+function toggleFavorite(tasks, taskIndex, elem) {
+    tasks[taskIndex].is_favorite = !tasks[taskIndex].is_favorite;
+
+    let savedTasks = [];
+    try {
+        savedTasks = JSON.parse(localStorage.getItem('tasks')) ?? [];
+    } catch (e) {
+        console.error(e);
+    }
+
+    const tasksWithoutCurrent = savedTasks.filter(t => t.id !== tasks[taskIndex].id);
+    tasksWithoutCurrent.push({
+        id: tasks[taskIndex].id,
+        is_favorite: tasks[taskIndex].is_favorite,
+        is_solved: tasks[taskIndex].is_solved
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasksWithoutCurrent));
+
+    updateFavoriteUI(elem, tasks[taskIndex].is_favorite);
+}
+
+function updateIsSolvedUI(elem, isCorrect) {
+    if (isCorrect) {
+        elem.textContent = "ВЕРНО"
+        elem.style.color = "green"
+    } else {
+        elem.textContent = "НЕ ВЕРНО"
+        elem.style.color = "red"
+    }
+}
+
+function updateFavoriteUI(elem, isFavorite) {
+    const favSVG = elem.querySelector(".main__tasks-card-footer-favorite-svg")
+    if (isFavorite) {
+        favSVG.setAttribute('fill', 'gold');
+    } else {
+        favSVG.setAttribute('fill', 'transparent');
+    }
+}
+
+
+
+
+
+function idSort(id) {
+    currentSubjectTasks = syncWithLS(currentSubjectTasks)
+    for (let i = 0; i < currentSubjectTasks.length; i++) {
+        if (currentSubjectTasks[i].id === id) {
+            return currentSubjectTasks[i]
+        }
+    }
+}
+
+function numberOfSort(number) {
+    currentSubjectTasks = syncWithLS(currentSubjectTasks)
+    let numberOfSorted = []
+
+    for (let i = 0; i < currentSubjectTasks.length; i++) {
+        if (currentSubjectTasks[i].number_of_oge === number) {
+            numberOfSorted.push(currentSubjectTasks[i])
+        }
+    }
+    return numberOfSorted
+}
+
+function favoriteSort(n) {
+    currentSubjectTasks = syncWithLS(currentSubjectTasks)
+    let favoriteSorted = []
+
+    for (let i = 0; i < currentSubjectTasks.length; i++) {
+        if (n === "all") {
+            favoriteSorted.push(currentSubjectTasks[i])
+        } else if (n) {
+            if (currentSubjectTasks[i].is_favorite === true) {
+                favoriteSorted.push(currentSubjectTasks[i])
+            }
+        } else {
+            if (currentSubjectTasks[i].is_favorite === false) {
+                favoriteSorted.push(currentSubjectTasks[i])
+            }
+        }
+    }
+    return favoriteSorted
+}
+
+function solvedSort(n) {
+    currentSubjectTasks = syncWithLS(currentSubjectTasks)
+    let solvedSorted = []
+
+    for (let i = 0; i < currentSubjectTasks.length; i++) {
+        if (n === "all") {
+            solvedSorted.push(currentSubjectTasks[i])
+        } else if (n) {
+            if (currentSubjectTasks[i].is_solved === true) {
+                solvedSorted.push(currentSubjectTasks[i])
+            }
+        } else {
+            if (currentSubjectTasks[i].is_solved === false) {
+                solvedSorted.push(currentSubjectTasks[i])
+            }
+        }
+    }
+    return solvedSorted
+}
+
+
+
+
+
+const tasksData = JSON.parse(tasksDataJson).tasks
 const subjectId = new URLSearchParams(window.location.search).get('subjectId') // из ссылки берется параметр subjectId
 const subjectTitle = document.getElementById("subjectTitle"); // по id берется заголовок страницы с заданиями
-const currentSubjectTasks = tasksData.filter((task) => {
+let currentSubjectTasks = tasksData.filter((task) => {
     return task.subject_id === subjectId
 })
-
 subjectTitle.innerHTML = currentSubjectTasks[0].subject;
+
+console.log("Функция idSort:")
+console.log(idSort("F8E641"))
+console.log("\n\n\n")
+
+console.log("Функция numberOfSort:")
+console.log(numberOfSort('1'))
+console.log("\n\n\n")
+
+console.log("Функция favoriteSort:")
+console.log(favoriteSort("true"))
+console.log("\n\n\n")
+
+console.log("Функция solvedSort:")
+console.log(solvedSort(true))
 
 // switch (subjectId) { // проверятся значение subjectId
 //     case "ENG001":
@@ -345,12 +538,11 @@ for (let i = 0; i < tasksCount; i++) { // пока все задания не о
     card.childNodes[3].innerHTML = currentSubjectTasks[i].description // вписывается описание (само задание)
     card.childNodes[7].childNodes[1].childNodes[1].innerHTML = "Номер: " + currentSubjectTasks[i].id // вписывается идентификационный номер задания
     tasksContainer.appendChild(card) // готовая карточка добавляется в блок
-    // console.log(card.childNodes)
 
     if (currentSubjectTasks[i].option === "none") {
         // if (input) input.remove(); если делать ремув, то элементы сбиваются
         if (input) input.style.display = "none"
-        btn.textContent = "Изменить ответ";
+        btn.textContent = "Изменить статус";
         btn.classList.add("main__tasks-card-btn_none")
     } else if (currentSubjectTasks[i].options === "select") {
 
@@ -358,27 +550,41 @@ for (let i = 0; i < tasksCount; i++) { // пока все задания не о
 }
 
 tasksContainer.removeChild(templateCard) // со страницы убирается шаблон карточки
+const taskStatuses = document.getElementsByClassName("main__tasks-card-footer-status-color")
+
+currentSubjectTasks = syncWithLS(currentSubjectTasks, taskStatuses)
 
 const answerInputs = document.getElementsByClassName("main__tasks-card-input") // по классу находим поле ввода карточки
 const answerButtons = document.getElementsByClassName("main__tasks-card-btn") // по классу находим кнопку отправки ответа
+const favoriteButtons = document.getElementsByClassName("main__tasks-card-footer-favorite")
 const inputValues = new Array(answerInputs.length).fill('')
-const taskStatus = document.getElementsByClassName("main__tasks-card-footer-status-color")
 
 for (let i = 0; i < answerInputs.length; i++) {
-    console.log(answerInputs[i])
     answerInputs[i].addEventListener('input', (event) => { // change изменяется когда input теряет фокус
         inputValues[i] = event.target.value
-        console.log(inputValues)
     })
     answerButtons[i].addEventListener('click', (event) => {
         if (inputValues[i].toLowerCase().trim() === currentSubjectTasks[i].correct_answer.toLowerCase().trim()) {
-            taskStatus[i].textContent = "ВЕРНО"
-            taskStatus[i].style.color = "green";
+            updateTask(currentSubjectTasks, {
+                ...currentSubjectTasks[i],
+                is_solved: true,
+            })
+            updateIsSolvedUI(taskStatuses[i], true)
         } else {
-            taskStatus[i].textContent = "НЕ ВЕРНО"
-            taskStatus[i].style.color = "red";
+            updateTask(currentSubjectTasks, {
+                ...currentSubjectTasks[i],
+                is_solved: false,
+            })
+            updateIsSolvedUI(taskStatuses[i], false)
         }
     })
+}
+
+for (let i = 0; i < favoriteButtons.length; i++) {
+    updateFavoriteUI(favoriteButtons[i], currentSubjectTasks[i].is_favorite)
+    favoriteButtons[i].addEventListener('click', () => {
+        toggleFavorite(currentSubjectTasks, i, favoriteButtons[i])
+    });
 }
 
 window.addEventListener('beforeunload', () => {
