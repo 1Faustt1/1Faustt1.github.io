@@ -128,7 +128,7 @@
                     grid-template-rows: repeat(6, 1fr);
                 }
 
-                @media (max-width: 400px) {
+                @media (max-width: 380px) {
                     grid-template-columns: repeat(1, 1fr);
                     grid-template-rows: repeat(7, 1fr);
                 }
@@ -177,7 +177,12 @@
                 }
 
                 @media (max-width: 400px) {
-                    width: 300px;
+                    width: 170px;
+                    height: 190px;
+                }
+
+                @media (max-width: 380px) {
+                    width: 250px;
                     height: 190px;
                 }
 

@@ -237,19 +237,16 @@
 
 .main {
   width: 100%;
-  min-height: 100vh;
   padding: 20px 0;
 }
 .main__gallery {
   width: 100%;
-  min-height: 100vh;
   padding: 20px 0;
   position: relative;
   background: url("../materials/1section-bg.png") center/cover no-repeat;
 }
 .main__functions {
   width: 100%;
-  min-height: 100vh;
   padding: 20px 0;
   padding: 100px 0;
 }
@@ -288,6 +285,11 @@
     justify-content: center;
   }
 }
+@media (max-width: 500px) {
+  .main__functions-cards {
+    gap: 50px;
+  }
+}
 .main__functions-card {
   width: 350px;
   height: 300px;
@@ -296,16 +298,52 @@
   margin-bottom: 50px;
   transition: 0.3s ease;
 }
+@media (max-width: 1100px) {
+  .main__functions-card {
+    width: 300px;
+    height: 250px;
+  }
+}
 @media (max-width: 800px) {
   .main__functions-card {
     width: 300px;
     height: 250px;
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 750px) {
+  .main__functions-card {
+    width: 270px;
+    height: 220px;
+  }
+}
+@media (max-width: 700px) {
   .main__functions-card {
     width: 230px;
     height: 170px;
+  }
+}
+@media (max-width: 600px) {
+  .main__functions-card {
+    width: 170px;
+    height: 130px;
+  }
+}
+@media (max-width: 500px) {
+  .main__functions-card {
+    width: 150px;
+    height: 110px;
+  }
+}
+@media (max-width: 450px) {
+  .main__functions-card {
+    width: 130px;
+    height: 90px;
+  }
+}
+@media (max-width: 400px) {
+  .main__functions-card {
+    width: 90px;
+    height: 50px;
   }
 }
 .main__functions-card:hover {
@@ -320,14 +358,33 @@
   color: #0F6D7E;
   padding: 15px 0;
 }
+@media (max-width: 800px) {
+  .main__functions-card-text {
+    font-size: 30px;
+  }
+}
+@media (max-width: 600px) {
+  .main__functions-card-text {
+    font-size: 27px;
+  }
+}
 @media (max-width: 500px) {
   .main__functions-card-text {
     font-size: 25px;
   }
 }
+@media (max-width: 500px) {
+  .main__functions-card-text {
+    font-size: 20px;
+  }
+}
+@media (max-width: 400px) {
+  .main__functions-card-text {
+    font-size: 16px;
+  }
+}
 .main__about {
   width: 100%;
-  min-height: 100vh;
   padding: 20px 0;
   background-color: #5EB7C6;
   padding: 100px 0;
@@ -532,7 +589,6 @@
 }
 .main__news {
   width: 100%;
-  min-height: 100vh;
   padding: 20px 0;
 }
 .main__news-container {

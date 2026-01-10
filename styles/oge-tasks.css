@@ -435,10 +435,10 @@
 .main__tasks-card-module-info {
   display: none;
   position: absolute;
-  bottom: 40px;
+  bottom: 55px;
   left: 50%;
   transform: translateX(-50%);
-  width: 1200px;
+  width: calc(100% - 40px);
   height: 95px;
   flex-direction: column;
   background: linear-gradient(180deg, rgba(15, 109, 126, 0.6) 0%, rgba(94, 183, 198, 0.6) 100%);
