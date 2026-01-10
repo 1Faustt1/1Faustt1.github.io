@@ -308,53 +308,51 @@ const tasksDataJson = `{
   }`;
 
 function syncWithLS(tasks, elems) {
-    // let savedTasks = []
-    // try {
-    //     savedTasks = JSON.parse(localStorage.getItem('tasks')) ?? []
-    // } catch (e) {
-    //     console.error(e)
-    // }
-    // if (!savedTasks) {
-    //     return tasks;
-    // }
-    // // const savedTasks = JSON.parse(localStorage.getItem('tasks'))
-    // return [...tasks].map((task, i) => {
-    //     const savedTask = savedTasks.find(s => s.id === task.id)
-    //     if (savedTask) {
-    //         const resultTask = {
-    //             ...structuredClone(task),
-    //             is_solved: savedTask.is_solved,
-    //             is_favorite: savedTask.is_favorite,
-    //         }
-    //         updateIsSolvedUI(elems[i], resultTask.is_solved)
-    //         return resultTask
-    //     }
-    //     return structuredClone(task)
-    // })
-
-    let savedTasks = [];
+    let savedTasks = []
     try {
-        savedTasks = JSON.parse(localStorage.getItem('tasks')) ?? [];
+        savedTasks = JSON.parse(localStorage.getItem('tasks')) ?? []
     } catch (e) {
-        console.error(e);
+        console.error(e)
     }
-
-    if (!savedTasks.length) return tasks;
-
-    // Перебираем массив карточек и обновляем поля is_solved и is_favorite
-    tasks.forEach((task, i) => {
-        const savedTask = savedTasks.find(s => s.id === task.id);
+    if (!savedTasks) {
+        return tasks;
+    }
+    // const savedTasks = JSON.parse(localStorage.getItem('tasks'))
+    return [...tasks].map((task, i) => {
+        const savedTask = savedTasks.find(s => s.id === task.id)
         if (savedTask) {
-            task.is_solved = savedTask.is_solved;
-            task.is_favorite = savedTask.is_favorite;
-            // Обновляем UI
-            if (elems && elems[i]) {
-                updateIsSolvedUI(elems[i], task.is_solved);
+            const resultTask = {
+                ...structuredClone(task),
+                is_solved: savedTask.is_solved,
+                is_favorite: savedTask.is_favorite,
             }
+            updateIsSolvedUI(elems[i], resultTask.is_solved)
+            return resultTask
         }
-    });
+        return structuredClone(task)
+    })
 
-    return tasks; // возвращаем сам массив, ссылки остаются те же
+    // let savedTasks = [];
+    // try {
+    //     savedTasks = JSON.parse(localStorage.getItem('tasks')) ?? [];
+    // } catch (e) {
+    //     console.error(e);
+    // }
+    //
+    // if (!savedTasks.length) return tasks;
+    //
+    // tasks.forEach((task, i) => {
+    //     const savedTask = savedTasks.find(s => s.id === task.id);
+    //     if (savedTask) {
+    //         task.is_solved = savedTask.is_solved;
+    //         task.is_favorite = savedTask.is_favorite;
+    //         if (elems && elems[i]) {
+    //             updateIsSolvedUI(elems[i], task.is_solved);
+    //         }
+    //     }
+    // });
+    //
+    // return tasks; // возвращаем сам массив, ссылки остаются те же
 }
 
 function updateTask(tasks, task) {
@@ -418,69 +416,32 @@ function updateFavoriteUI(elem, isFavorite) {
     }
 }
 
+function toggleInfoModule(index) {
+    const block = infoBlock[index];
+    let isHidden = block.style.display === 'none' || block.style.display === '';
 
-
-
-
-function idSort(id) {
-    currentSubjectTasks = syncWithLS(currentSubjectTasks)
-    for (let i = 0; i < currentSubjectTasks.length; i++) {
-        if (currentSubjectTasks[i].id === id) {
-            return currentSubjectTasks[i]
-        }
+    if (isHidden) {
+        block.style.display = 'flex';
+    } else {
+        block.style.display = 'none';
     }
 }
 
-function numberOfSort(number) {
-    currentSubjectTasks = syncWithLS(currentSubjectTasks)
-    let numberOfSorted = []
 
-    for (let i = 0; i < currentSubjectTasks.length; i++) {
-        if (currentSubjectTasks[i].number_of_oge === number) {
-            numberOfSorted.push(currentSubjectTasks[i])
-        }
+
+const filterById = (tasks, id) => tasks.find(task => task.id === id)
+const filterByNumberOfOge = (tasks, number) => tasks.filter(task => task.number_of_oge === number)
+const filterByFavorite = (tasks, isFavorite=null) => {
+    if (isFavorite === null) {
+        return [...tasks]
     }
-    return numberOfSorted
+    return tasks.filter(task => task.is_favorite === isFavorite)
 }
-
-function favoriteSort(n) {
-    currentSubjectTasks = syncWithLS(currentSubjectTasks)
-    let favoriteSorted = []
-
-    for (let i = 0; i < currentSubjectTasks.length; i++) {
-        if (n === "all") {
-            favoriteSorted.push(currentSubjectTasks[i])
-        } else if (n) {
-            if (currentSubjectTasks[i].is_favorite === true) {
-                favoriteSorted.push(currentSubjectTasks[i])
-            }
-        } else {
-            if (currentSubjectTasks[i].is_favorite === false) {
-                favoriteSorted.push(currentSubjectTasks[i])
-            }
-        }
+const filterBySolved = (tasks, isSolved = null) => {
+    if (isSolved === null) {
+        return [...tasks]
     }
-    return favoriteSorted
-}
-
-function solvedSort(n) {
-    currentSubjectTasks = syncWithLS(currentSubjectTasks)
-    let solvedSorted = []
-
-    for (let i = 0; i < currentSubjectTasks.length; i++) {
-        if (n === "all") {
-            solvedSorted.push(currentSubjectTasks[i])
-        } else if (n) {
-            if (currentSubjectTasks[i].is_solved === true) {
-                solvedSorted.push(currentSubjectTasks[i])
-            }
-        } else {
-            if (currentSubjectTasks[i].is_solved === false) {
-                solvedSorted.push(currentSubjectTasks[i])
-            }
-        }
-    }
-    return solvedSorted
+    return tasks.filter(task => task.is_solved === isSolved)
 }
 
 
@@ -494,21 +455,6 @@ let currentSubjectTasks = tasksData.filter((task) => {
     return task.subject_id === subjectId
 })
 subjectTitle.innerHTML = currentSubjectTasks[0].subject;
-
-console.log("Функция idSort:")
-console.log(idSort("F8E641"))
-console.log("\n\n\n")
-
-console.log("Функция numberOfSort:")
-console.log(numberOfSort('1'))
-console.log("\n\n\n")
-
-console.log("Функция favoriteSort:")
-console.log(favoriteSort("true"))
-console.log("\n\n\n")
-
-console.log("Функция solvedSort:")
-console.log(solvedSort(true))
 
 // switch (subjectId) { // проверятся значение subjectId
 //     case "ENG001":
@@ -554,9 +500,26 @@ const taskStatuses = document.getElementsByClassName("main__tasks-card-footer-st
 
 currentSubjectTasks = syncWithLS(currentSubjectTasks, taskStatuses)
 
+console.log("Функция idSort:")
+console.log(filterById(currentSubjectTasks, "C0544E"))
+console.log("\n\n\n")
+
+console.log("Функция numberOfSort:")
+console.log(filterByNumberOfOge(currentSubjectTasks,'1'))
+console.log("\n\n\n")
+
+console.log("Функция favoriteSort:")
+console.log(filterByFavorite(currentSubjectTasks))
+console.log("\n\n\n")
+
+console.log("Функция solvedSort:")
+console.log(filterBySolved(currentSubjectTasks,false))
+
 const answerInputs = document.getElementsByClassName("main__tasks-card-input") // по классу находим поле ввода карточки
 const answerButtons = document.getElementsByClassName("main__tasks-card-btn") // по классу находим кнопку отправки ответа
 const favoriteButtons = document.getElementsByClassName("main__tasks-card-footer-favorite")
+const infoButtons = document.getElementsByClassName("main__tasks-card-footer-info")
+const infoBlock = document.getElementsByClassName("main__tasks-card-module-info")
 const inputValues = new Array(answerInputs.length).fill('')
 
 for (let i = 0; i < answerInputs.length; i++) {
@@ -587,6 +550,12 @@ for (let i = 0; i < favoriteButtons.length; i++) {
     });
 }
 
+for (let i = 0; i < infoButtons.length; i++) {
+    infoButtons[i].addEventListener('click', () => {
+        toggleInfoModule(i);
+    });
+}
+
 window.addEventListener('beforeunload', () => {
     answerInputs.forEach((answerInput, index) => {
         answerInput.removeEventListener('change')
@@ -594,5 +563,5 @@ window.addEventListener('beforeunload', () => {
     })
     alert("Очистка успешна.")
 })
-
+// чёто написал в ls, переоткрыл, если что-то написано, то гуд, если нет то нет
 // localStorage.setItem('id', JSON.stringify([tasksDataJson]))

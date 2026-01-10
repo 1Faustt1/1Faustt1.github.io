@@ -432,6 +432,34 @@
   transform: scale(0.9);
   filter: brightness(0.9);
 }
+.main__tasks-card-module-info {
+  display: none;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1200px;
+  height: 95px;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(15, 109, 126, 0.6) 0%, rgba(94, 183, 198, 0.6) 100%);
+  border-radius: 15px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+.main__tasks-card-module-info-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  background-color: rgba(94, 183, 198, 0.3);
+  border-radius: 15px 15px 0 0;
+  text-align: center;
+}
+.main__tasks-card-module-info-header-title {
+  color: #0F6D7E;
+  line-height: 35px;
+}
 .main__tasks-card-footer {
   width: 100%;
   height: 40px;
