@@ -363,23 +363,46 @@ filterButton.addEventListener("click", () => { // слушание кнопки 
 })
 
 idSearchInput.addEventListener("input", (event) => { // слушание поля ввода номера задания
-    const foundTask = filterById(currentSubjectTasks, event.target.value)
 
-    for (let i = 0; i < currentSubjectTasks.length; i++) { // проходим по всем заданиям текущего предмета
-        const card = tasksContainer.children[i]; // берём соответствующую карточку из контейнера
-        if (!card) continue; // если карточка не найдена (на всякий случай), пропускаем итерацию
+    // ПОИСК ПО ТОЧНОМУ СОВПАДЕНИЮ
+    // const foundTask = filterById(currentSubjectTasks, event.target.value)
+    //
+    // for (let i = 0; i < currentSubjectTasks.length; i++) { // проходим по всем заданиям текущего предмета
+    //     const card = tasksContainer.children[i]; // берём соответствующую карточку из контейнера
+    //     if (!card) continue; // если карточка не найдена (на всякий случай), пропускаем итерацию
+    //
+    //     // если ничего не найдено, показываем все
+    //     if (!foundTask) {
+    //         card.classList.remove("hidden") // показываем все
+    //
+    //     // если id текущего задания совпадает с найденным
+    //     } else if (currentSubjectTasks[i].id === foundTask.id) {
+    //         card.classList.remove("hidden") // показываем найденное
+    //
+    //     // если карточка не совпадает с найденным заданием
+    //     } else {
+    //         card.classList.add("hidden") // скрываем
+    //     }
+    // }
 
-        // если ничего не найдено, показываем все
-        if (!foundTask) {
-            card.classList.remove("hidden") // показываем все
+    // ПОИСК ПО ЧАСТИЧНОМУ СОВПАДЕНИЮ
+    const foundTask = event.target.value.trim()
 
-        // если id текущего задания совпадает с найденным
-        } else if (currentSubjectTasks[i].id === foundTask.id) {
-            card.classList.remove("hidden") // показываем найденное
+    if (!foundTask) { // если пусто, показываем все
+        for (let i = 0; i < currentSubjectTasks.length; i++) {
+            const card = tasksContainer.children[i];
+            if (card) card.classList.remove("hidden");
+        }
+        return;
+    }
 
-        // если карточка не совпадает с найденным заданием
+    for (let i = 0; i < currentSubjectTasks.length; i++) {
+        const card = tasksContainer.children[i];
+        // Приводим id задания к строке
+        if (String(currentSubjectTasks[i].id).includes(foundTask)) {
+            card.classList.remove("hidden"); // показываем совпадение
         } else {
-            card.classList.add("hidden") // скрываем
+            card.classList.add("hidden"); // скрываем все остальные
         }
     }
 })
