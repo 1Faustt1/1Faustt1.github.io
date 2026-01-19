@@ -256,3 +256,127 @@
     transform: scale(0.9);
     filter: brightness(0.9);
 }
+
+@mixin filter-radial-preset {
+    display: flex;
+    gap: 25px;
+
+    &-input {
+        appearance: none;
+        background-color: $white;
+        width: 16px;
+        height: 16px;
+        border: 1px solid $dark-blue;
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+        transition: 0.2s;
+
+        @media (max-width: 800px) {
+            width: 14px;
+            height: 14px;
+        }
+
+        @media (max-width: 680px) {
+            width: 12px;
+            height: 12px;
+        }
+
+        @media (max-width: 439px) {
+            width: 8px;
+            height: 8px;
+        }
+
+        &:hover {
+            box-shadow: 0 0 4px 2px $dark-blue;
+            transform: scale(1.05);
+
+        }
+
+        &:checked::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: $dark-blue;
+            border-radius: 50%;
+
+            @media (max-width: 800px) {
+                width: 6px;
+                height: 6px;
+            }
+
+            @media (max-width: 439px) {
+                width: 4px;
+                height: 4px;
+            }
+        }
+    }
+
+    &-label {
+        cursor: pointer;
+        font-size: 22px;
+
+        @media (max-width: 800px) {
+            font-size: 18px;
+        }
+
+        @media (max-width: 680px) {
+            font-size: 16px;
+        }
+
+        @media (max-width: 620px) {
+            font-size: 14px;
+        }
+
+        @media (max-width: 496px) {
+            font-size: 12px;
+        }
+
+        @media (max-width: 439px) {
+            font-size: 10px;
+        }
+    }
+}
+
+@mixin filter-button {
+    text-align: center;
+    color: $black-55;
+    background-color: $white;
+    font-size: 16px;
+    height: 27px;
+    border: 2px solid $dark-blue;
+    outline: none;
+    transition: 0.2s;
+
+    @media (max-width: 620px) {
+        height: 20px;
+        font-size: 12px;
+    }
+
+    &:active {@include active;}
+    &:hover {
+        background-color: $dark-blue;
+        color: $white;
+    }
+}
+
+@mixin filter-text {
+    font-size: 25px;
+    font-weight: bold;
+
+    @media (max-width: 800px) {
+        font-size: 20px;
+    }
+    
+    @media (max-width: 680px) {
+        font-size: 18px;
+    }
+
+    @media (max-width: 620px) {
+        font-size: 16px;
+    }
+}

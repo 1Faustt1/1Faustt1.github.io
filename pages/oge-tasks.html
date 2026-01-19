@@ -52,7 +52,7 @@
 
         <section class="main__headbar">
             <div class="main__headbar-container">
-                <button class="main__headbar-filter"><img class="main__headbar-filter-img" src="../materials/filter.svg"></button>
+                <button id="filter-btn" class="main__headbar-filter"><img class="main__headbar-filter-img" src="../materials/filter.svg"></button>
                 <div class="main__headbar-pages">
                     <button class="main__headbar-pages-page">1</button>
                     <button class="main__headbar-pages-page">2</button>
@@ -66,6 +66,71 @@
                     <button class="main__headbar-pages-page">10</button>
                 </div>
                 <button class="main__headbar-generator"><img class="main__headbar-generator-img" src=""></button>
+                <div id="module-filter" class="main__tasks-card-module main__tasks-card-module-filter">
+                    <div class="main__tasks-card-module-header">
+                        <p class="main__tasks-card-module-header-title">ФИЛЬТР ЗАДАНИЙ</p>
+                    </div>
+                    <form class="main__tasks-card-module-filter-form">
+                        <div class="main__tasks-card-module-filter-form-number-of-oge">
+                            <p class="main__tasks-card-module-filter-form-number-of-oge-text">Номер задания из ОГЭ</p>
+                            <select class="main__tasks-card-module-filter-form-number-of-oge-select" id="filter-select">
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="all">Выбор</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="1">1</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="2">2</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="3">3</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="4">4</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="5">5</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="6">6</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="7">7</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="8">8</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="9">9</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="10">10</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="11">11</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="12">12</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="13">13</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="14">14</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="15">15</option>
+                                <option class="main__tasks-card-module-filter-form-number-of-oge-select-option" value="16">16</option>
+                            </select>
+                        </div>
+                        <div class="main__tasks-card-module-filter-form-radial-search">
+                            <p class="main__tasks-card-module-filter-form-radial-search-text">Искать задания:</p>
+                            <div class=" main__tasks-card-module-filter-form-radial-search-solve">
+
+                                <label class="main__tasks-card-module-filter-form-radial-search-solve-label" for="filter-solved-all">
+                                    <input class="main__tasks-card-module-filter-form-radial-search-solve-input" id="filter-solved-all" type="radio" name="isSolved" value="all" checked>
+                                    Все
+                                </label>
+                                <label class="main__tasks-card-module-filter-form-radial-search-solve-label" for="filter-solved-true">
+                                    <input class="main__tasks-card-module-filter-form-radial-search-solve-input" id="filter-solved-true" type="radio" name="isSolved" value="true">
+                                    Решенные
+                                </label>
+                                <label class="main__tasks-card-module-filter-form-radial-search-solve-label" for="filter-solved-false">
+                                    <input class="main__tasks-card-module-filter-form-radial-search-solve-input" id="filter-solved-false" type="radio" name="isSolved" value="false">
+                                    Не решенные
+                                </label>
+                            </div>
+                            <div class=" main__tasks-card-module-filter-form-radial-search-favorite">
+                                <label class="main__tasks-card-module-filter-form-radial-search-favorite-label" for="filter-favorite-all">
+                                    <input class="main__tasks-card-module-filter-form-radial-search-favorite-input" id="filter-favorite-all" type="radio" name="isFavorite" value="all" checked>
+                                    Все
+                                </label>
+                                <label class="main__tasks-card-module-filter-form-radial-search-favorite-label" for="filter-favorite-true">
+                                    <input class="main__tasks-card-module-filter-form-radial-search-favorite-input" id="filter-favorite-true" type="radio" name="isFavorite" value="true">
+                                    Только в “Избранном”
+                                </label>
+                                <label class="main__tasks-card-module-filter-form-radial-search-favorite-label" for="filter-favorite-false">
+                                    <input class="main__tasks-card-module-filter-form-radial-search-favorite-input" id="filter-favorite-false" type="radio" name="isFavorite" value="false">
+                                    Все, кроме включенных в “Избранное”
+                                </label>
+                            </div>
+                        </div>
+                        <div class="main__tasks-card-module-filter-form-buttons">
+                            <button type="button" class="main__tasks-card-module-filter-form-buttons-search" id="filter-btn-search">Найти</button>
+                            <button type="reset" class="main__tasks-card-module-filter-form-buttons-reset">Сбросить фильтр</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
 
@@ -92,9 +157,9 @@
                             </button>
                         </div>
                     </div>
-                    <div class="main__tasks-card-module-info">
-                        <div class="main__tasks-card-module-info-header">
-                            <p class="main__tasks-card-module-info-header-title">СВОЙСТВА ЗАДАНИЯ</p>
+                    <div id="module-info" class="main__tasks-card-module main__tasks-card-module-info">
+                        <div class="main__tasks-card-module-header">
+                            <p class="main__tasks-card-module-header-title">СВОЙСТВА ЗАДАНИЯ</p>
                         </div>
                     </div>
                 </div>

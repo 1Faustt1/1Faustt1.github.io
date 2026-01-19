@@ -44,6 +44,7 @@
     }
 
     &__headbar {
+        position: relative;
         padding: 30px 0;
         &-container {
             @include container-width;
@@ -72,7 +73,7 @@
                 color: $dark-blue;
                 font-size: 20px;
                 font-weight: 700;
-                transition: 0.3s;
+                transition: 0.2s;
 
                 &:hover {
                     background-color: $dark-blue;
@@ -94,7 +95,7 @@
             outline: none;
             width: 40px;
             height: 40px;
-            transition: 0.3s;
+            transition: 0.2s;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -116,7 +117,7 @@
 
         &-generator {
 
-            transition: 0.3s;
+            transition: 0.2s;
 
             &-img {
 
@@ -180,7 +181,7 @@
                 outline: none;
                 border-radius: 0 15px 15px 0;
                 text-align: center;
-                transition: 0.3s;
+                transition: 0.2s;
                 font-size: 16px;
 
                 &_none {
@@ -198,7 +199,7 @@
                 }
             }
 
-            &-module-info {
+            &-module {
                 display: none;
                 position: absolute;
                 bottom: 55px;
@@ -225,6 +226,140 @@
                     &-title {
                         color: $dark-blue;
                         line-height: 35px;
+                    }
+                }
+
+                &-info {
+
+                }
+
+                &-filter {
+                    @include container-width;
+                    position: absolute;
+                    z-index: 255;
+                    top: 200px;
+                    width: 100%;
+                    height: 250px;
+
+                    @media (max-width: 800px) {
+                        height: 230px;
+                    }
+
+                    @media (max-width: 680px) {
+                        height: 220px;
+                    }
+
+                    @media (max-width: 620px) {
+                        height: 200px;
+                    }
+
+                    @media (max-width: 620px) {
+                        padding: 0 10px;
+                    }
+
+                    @media (max-width: 556px) {
+                        height: 190px;
+                    }
+
+                    @media (max-width: 506px) {
+                        padding: 0 5px;
+                    }
+
+                    @media (max-width: 353px) {
+                        height: 250px;
+                    }
+
+                    @media (max-width: 335px) {
+                        height: 270px;
+                    }
+
+                    &-form {
+                        padding: 10px 15px;
+                        margin-top: 35px;
+                        
+                        @media (max-width: 556px) {
+                            padding: 0;
+                        }
+
+                        &-number-of-oge {
+                            display: flex;
+                            gap: 15px;
+
+                            @media (max-width: 800px) {
+                                gap: 5px;
+                            }
+
+                            &-text {
+                                @include filter-text;
+                            }
+
+                            &-select {
+                                width: 180px;
+                                border-radius: 5px 15px 15px 5px;
+                                padding: 0 5px;
+                                border: 3px solid $dark-blue;
+                                outline: none;
+                                text-align: center;
+                                color: $black-55;
+                                font-size: 16px;
+                                transition: 0.2s;
+
+                                @media (max-width: 800px) {
+                                    width: 150px;
+                                    height: 26px;
+                                }
+
+                                @media (max-width: 620px) {
+                                    width: 120px;
+                                    height: 22px;
+                                    font-size: 12px;
+                                }
+
+                                &:hover {
+                                    box-shadow: 0 0 4px 2px $dark-blue;
+                                    transform: scale(1.02);
+                                }
+
+                                &-option {
+
+                                }
+                            }
+                        }
+
+                        &-radial-search {
+                            margin-top: 20px;
+
+                            &-text {
+                                @include filter-text;
+                            }
+
+                            &-solve {
+                                @include filter-radial-preset;
+
+                            }
+
+                            &-favorite {
+                                @include filter-radial-preset;
+                            }
+                        }
+
+                        &-buttons {
+                            position: relative;
+                            top: 25px;
+                            text-align: right;
+
+                            &-search {
+                                @include filter-button;
+                                width: 80px;
+                                border-radius: 15px 0 0 15px;
+                            }
+
+                            &-reset {
+                                @include filter-button;
+                                width: 140px;
+                                border-radius: 0 15px 15px 0;
+                            }
+                        }
                     }
                 }
             }
@@ -267,7 +402,7 @@
                     font-size: 18px;
                     font-weight: 700;
                     text-align: center;
-                    transition: 0.3s;
+                    transition: 0.2s;
 
                     &:hover {
                         background-color: $dark-blue;
@@ -285,7 +420,7 @@
                     outline: none;
                     width: 30px;
                     height: 30px;
-                    transition: 0.3s;
+                    transition: 0.2s;
 
                     &-img {
                         width: 100%;
