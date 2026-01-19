@@ -283,9 +283,9 @@ function filterListener() { // функция, которая считывает
     const filterFavoriteValue = filterFavorite.value
 
     console.log(filterSelectValue, filterSolvedValue, filterFavoriteValue)
-    filterByNumberOfOge(currentSubjectTasks, filterSelectValue)
-    filterBySolved(currentSubjectTasks, filterSolvedValue)
-    filterByFavorite(currentSubjectTasks, filterFavoriteValue)
+    const foundByNumberOfOge = filterByNumberOfOge(currentSubjectTasks, filterSelectValue)
+    const foundBySolved = filterBySolved(currentSubjectTasks, filterSolvedValue)
+    const foundByFavorite = filterByFavorite(currentSubjectTasks, filterFavoriteValue)
 }
 
 function toggleFilter() { // функция выключения и выключения окна фильтра
@@ -321,6 +321,8 @@ const answerInputs = document.getElementsByClassName("main__tasks-card-input") /
 const answerButtons = document.getElementsByClassName("main__tasks-card-btn") // по классу находим кнопки отправки ответа
 const favoriteButtons = document.getElementsByClassName("main__tasks-card-footer-favorite") // по классу находим кнопки избранного
 const inputValues = new Array(answerInputs.length).fill('') // создается пустой список длиной равной количеству полей ввода
+const idSearchInput = document.getElementById("id-search-input") // по id находится поле ввода
+const idSearchBtn = document.getElementById("id-search-button")
 
 for (let i = 0; i < answerInputs.length; i++) { // слушание каждого поля ввода
     answerInputs[i].addEventListener('input', (event) => {
@@ -356,8 +358,30 @@ for (let i = 0; i < infoButtons.length; i++) { // слушание каждой 
     });
 }
 
-filterButton.addEventListener("click", (event) => { // слушание кнопки открытия окна фильтра
+filterButton.addEventListener("click", () => { // слушание кнопки открытия окна фильтра
     toggleFilter();
+})
+
+idSearchInput.addEventListener("input", (event) => { // слушание поля ввода номера задания
+    const foundTask = filterById(currentSubjectTasks, event.target.value)
+
+    for (let i = 0; i < currentSubjectTasks.length; i++) { // проходим по всем заданиям текущего предмета
+        const card = tasksContainer.children[i]; // берём соответствующую карточку из контейнера
+        if (!card) continue; // если карточка не найдена (на всякий случай), пропускаем итерацию
+
+        // если ничего не найдено, показываем все
+        if (!foundTask) {
+            card.classList.remove("hidden") // показываем все
+
+        // если id текущего задания совпадает с найденным
+        } else if (currentSubjectTasks[i].id === foundTask.id) {
+            card.classList.remove("hidden") // показываем найденное
+
+        // если карточка не совпадает с найденным заданием
+        } else {
+            card.classList.add("hidden") // скрываем
+        }
+    }
 })
 
 
