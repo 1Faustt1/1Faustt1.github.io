@@ -70,28 +70,6 @@
                 font-size: 14px;
             }
         }
-
-        &-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            right: 0;
-            border: 2px solid $dark-blue;
-            background-color: $white;
-            color: $dark-blue;
-            outline: none;
-            border-radius: 15px;
-            font-size: 16px;
-            width: 30px;
-            height: 30px;
-            transition: 0.2s;
-            cursor: pointer;
-
-            &:hover {
-                background-color: $dark-blue;
-                color: $white;
-            }
-        }
     }
 }
 

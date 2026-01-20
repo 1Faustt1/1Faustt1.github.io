@@ -244,6 +244,7 @@
   padding: 20px 0;
   position: relative;
   background: url("../materials/1section-bg.png") center/cover no-repeat;
+  height: 100vh;
 }
 .main__functions {
   width: 100%;

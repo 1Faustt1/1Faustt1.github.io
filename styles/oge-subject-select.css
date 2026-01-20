@@ -135,7 +135,8 @@
     width: 100%;
     height: 100vh;
     background-color: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
   }
   .header__menu-content {
     position: relative;
@@ -595,6 +596,4 @@
   height: 2px;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 20px;
-}
-
-/*# sourceMappingURL=oge-subject-select.css.map */
+}/*# sourceMappingURL=oge-subject-select.css.map */

@@ -120,7 +120,8 @@ const tasksDataJson = `{
   }`;
 
 // Функция синхронизации списка задач с LocalStorage
-function syncWithLS(tasks, elems) {
+function syncWithLS(tasks) {
+    const taskStatuses = document.getElementsByClassName("main__tasks-card-footer-status-color") // из карточки достается значение решения (решено или нет)
     let savedTasks = []
     try {
         savedTasks = JSON.parse(localStorage.getItem('tasks')) ?? []
@@ -130,6 +131,7 @@ function syncWithLS(tasks, elems) {
     if (!savedTasks) {
         return tasks;
     }
+    console.log("sync good", savedTasks)
     return [...tasks].map((task, i) => {
         const savedTask = savedTasks.find(s => s.id === task.id)
         if (savedTask) {
@@ -138,7 +140,7 @@ function syncWithLS(tasks, elems) {
                 is_solved: savedTask.is_solved,
                 is_favorite: savedTask.is_favorite,
             }
-            updateIsSolvedUI(elems[i], resultTask.is_solved)
+            updateIsSolvedUI(taskStatuses[i], resultTask.is_solved)
             return resultTask
         }
         return structuredClone(task)
@@ -147,6 +149,7 @@ function syncWithLS(tasks, elems) {
 
 // Функция обновляющая задания с информацией с LocalStorage
 function updateTask(tasks, task) {
+
     let savedTasks = []
     try {
         savedTasks = JSON.parse(localStorage.getItem('tasks')) ?? []
@@ -163,29 +166,6 @@ function updateTask(tasks, task) {
 
     tasksWithoutCurrent.push(taskToSave)
     localStorage.setItem('tasks', JSON.stringify(tasksWithoutCurrent))
-    syncWithLS(tasks, taskStatuses)
-}
-
-// Функция добавления задания в избранное
-function toggleFavorite(tasks, taskIndex, elem) {
-    tasks[taskIndex].is_favorite = !tasks[taskIndex].is_favorite;
-
-    let savedTasks = [];
-    try {
-        savedTasks = JSON.parse(localStorage.getItem('tasks')) ?? [];
-    } catch (e) {
-        console.error(e);
-    }
-
-    const tasksWithoutCurrent = savedTasks.filter(t => t.id !== tasks[taskIndex].id);
-    tasksWithoutCurrent.push({
-        id: tasks[taskIndex].id,
-        is_favorite: tasks[taskIndex].is_favorite,
-        is_solved: tasks[taskIndex].is_solved
-    });
-    localStorage.setItem('tasks', JSON.stringify(tasksWithoutCurrent));
-
-    updateFavoriteUI(elem, tasks[taskIndex].is_favorite);
 }
 
 // Функция обновляющая статус задания (решено верно или не верно)
@@ -201,11 +181,146 @@ function updateIsSolvedUI(elem, isCorrect) {
 
 // Функция обновляющая статус избранного
 function updateFavoriteUI(elem, isFavorite) {
+    console.log("fav ui updated", elem, isFavorite)
     const favSVG = elem.querySelector(".main__tasks-card-footer-favorite-svg")
     if (isFavorite) {
         favSVG.setAttribute('fill', 'gold');
     } else {
         favSVG.setAttribute('fill', 'transparent');
+    }
+}
+
+function initAnswerCheckerListeners(tasks) {
+    const answerInputs = document.getElementsByClassName("main__tasks-card-input") // по классу находим поля ввода карточки
+    const inputValues = new Array(answerInputs.length).fill('') // создается пустой список длиной равной количеству полей ввода
+    const answerButtons = document.getElementsByClassName("main__tasks-card-btn") // по классу находим кнопки отправки ответа
+    const taskStatuses = document.getElementsByClassName("main__tasks-card-footer-status-color") // из карточки достается значение решения (решено или нет)
+    console.log(inputValues)
+    for (let i = 0; i < inputValues.length; i++) { // слушание каждого поля ввода
+        answerInputs[i].addEventListener('input', (event) => {
+            inputValues[i] = event.target.value
+        })
+        answerButtons[i].addEventListener('click', (event) => { // // при клике проверяем ответ пользователя и обновляем статус задания
+            if (inputValues[i].toLowerCase().trim() === tasks[i].correct_answer.toLowerCase().trim()) {
+                updateTask(tasks, {
+                    ...tasks[i],
+                    is_solved: true,
+                })
+                updateIsSolvedUI(taskStatuses[i], true)
+            } else {
+                updateTask(tasks, {
+                    ...tasks[i],
+                    is_solved: false,
+                })
+                updateIsSolvedUI(taskStatuses[i], false)
+            }
+        })
+    }
+}
+
+function initFavoriteCheckerListeners(tasks) {
+    const favoriteButtons = document.getElementsByClassName("main__tasks-card-footer-favorite") // по классу находим кнопки избранного
+    for (let i = 0; i < favoriteButtons.length; i++) { // слушание каждой кнопки добавления в избранное
+        updateFavoriteUI(favoriteButtons[i], tasks[i].is_favorite)
+        favoriteButtons[i].addEventListener('click', () => {
+            tasks[i].is_favorite = !tasks[i].is_favorite;
+
+            updateTask(tasks, {
+                ...tasks[i],
+                is_favorite: tasks[i].is_favorite,
+            })
+            updateFavoriteUI(favoriteButtons[i], tasks[i].is_favorite);
+        });
+    }
+}
+
+function render(tasks) {
+    const templateCard = document.getElementById("template-card") // по id находится шаблон карточки
+    const tasksContainer = document.getElementById("tasks-container") // по id находится блок где будут находиться все карточки с заданиями
+    for (let i = 0; i < tasks.length; i++) { // пока все задания не обработаются цикл работает
+        const card = templateCard.cloneNode(true) // копируется шаблон карточки
+        const input = card.querySelector('.main__tasks-card-input') // берется поле ввода карточка
+        const btn = card.querySelector('.main__tasks-card-btn') // берется кнопка ответить из карточки
+
+        card.classList.remove("hidden") // убираем класс hidden, чтобы отобразить карточку
+        card.childNodes[1].innerHTML = tasks[i].name // вписывается заголовок
+        card.childNodes[3].innerHTML = tasks[i].description // вписывается описание (само задание)
+        card.childNodes[7].childNodes[1].childNodes[1].innerHTML = "Номер: " + tasks[i].id // вписывается идентификационный номер задания
+        tasksContainer.appendChild(card) // готовая карточка добавляется в блок
+
+        // вариации ответа на задание
+        if (tasks[i].option === "none") {
+            if (input) input.style.display = "none"
+            btn.textContent = "Изменить статус";
+            btn.classList.add("main__tasks-card-btn_none")
+        } else if (tasks[i].options === "select") {
+
+        }
+    }
+    tasksContainer.removeChild(templateCard) // со страницы убирается шаблон карточки
+}
+
+function initInfoClickListeners() {
+    const infoButtons = document.getElementsByClassName("main__tasks-card-footer-info") // кнопка информации в карточке
+    for (let i = 0; i < infoButtons.length; i++) { // слушание каждой кнопки открытия окна информации
+        infoButtons[i].addEventListener('click', () => {
+            toggleInfoModule(i);
+        });
+    }
+}
+
+function initFilterToggleListener() {
+    const filterButton = document.getElementById("filter-btn") // кнопка фильтра на странице
+    filterButton.addEventListener("click", () => { // слушание кнопки открытия окна фильтра
+        toggleFilter();
+    })
+}
+
+function initSearchListener() {
+    const idSearchInput = document.getElementById("id-search-input") // по id находится поле ввода
+    idSearchInput.addEventListener('input', () => {
+        searchById()
+    })
+}
+
+function initWindowListener() {
+    const answerInputs = document.getElementsByClassName("main__tasks-card-input") // по классу находим поля ввода карточки
+    const answerButtons = document.getElementsByClassName("main__tasks-card-btn") // по классу находим кнопки отправки ответа
+    const infoButtons = document.getElementsByClassName("main__tasks-card-footer-info") // кнопка информации в карточке
+    window.addEventListener('beforeunload', () => { // при закрытии окна удалить все слушатели
+        answerInputs.forEach((answerInput, index) => {
+            answerInputs[index].removeEventListener('change')
+            answerButtons[index].removeEventListener('click')
+            infoButtons[index].removeEventListener('click')
+        })
+        alert("Очистка успешна.")
+    })
+}
+
+function toggleFilter() { // функция выключения и выключения окна фильтра
+    const filterBtnSearch = document.getElementById("filter-btn-search") // кнопка применение фильтра
+    const block = document.getElementById("module-filter") // окно фильтра на странице
+    let isHidden = block.style.display === 'none' || block.style.display === ''
+
+    if (isHidden) {
+        block.style.display = 'flex'
+        filterBtnSearch.addEventListener('click', filterListener)
+
+    } else {
+        block.style.display = 'none'
+        filterBtnSearch.removeEventListener('click', filterListener)
+    }
+}
+
+function toggleInfoModule(index) { // функция выключения и выключения окна информации в карточке
+    const infoBlock = document.getElementsByClassName("main__tasks-card-module-info") // окно информации в карточке
+    const block = infoBlock[index]
+    let isHidden = block.style.display === 'none' || block.style.display === ''
+
+    if (isHidden) {
+        block.style.display = 'flex'
+    } else {
+        block.style.display = 'none'
     }
 }
 
@@ -231,48 +346,6 @@ const filterBySolved = (tasks, isSolved = null) => {
     return tasks.filter(task => task.is_solved === isSolved)
 }
 
-const tasksData = JSON.parse(tasksDataJson).tasks // из списка заданий достаем массив заданий
-const subjectId = new URLSearchParams(window.location.search).get('subjectId') // из ссылки берется параметр subjectId
-const subjectTitle = document.getElementById("subjectTitle"); // по id берется заголовок страницы с заданиями
-let currentSubjectTasks = tasksData.filter((task) => { // массив заданий согласно предмету
-    return task.subject_id === subjectId
-})
-subjectTitle.innerHTML = currentSubjectTasks[0].subject // В заголовок страницы вставляется название предмета
-
-const templateCard = document.getElementById("template-card") // по id находится шаблон карточки
-const tasksContainer = document.getElementById("tasks-container") // по id находится блок где будут находиться все карточки с заданиями
-const tasksCount = currentSubjectTasks.length // информация по количеству заданий
-
-for (let i = 0; i < tasksCount; i++) { // пока все задания не обработаются цикл работает
-    const card = templateCard.cloneNode(true) // копируется шаблон карточки
-    const input = card.querySelector('.main__tasks-card-input') // берется поле ввода карточка
-    const btn = card.querySelector('.main__tasks-card-btn') // берется кнопка ответить из карточки
-
-    card.classList.remove("hidden") // убираем класс hidden, чтобы отобразить карточку
-    card.childNodes[1].innerHTML = currentSubjectTasks[i].name // вписывается заголовок
-    card.childNodes[3].innerHTML = currentSubjectTasks[i].description // вписывается описание (само задание)
-    card.childNodes[7].childNodes[1].childNodes[1].innerHTML = "Номер: " + currentSubjectTasks[i].id // вписывается идентификационный номер задания
-    tasksContainer.appendChild(card) // готовая карточка добавляется в блок
-
-    // вариации ответа на задание
-    if (currentSubjectTasks[i].option === "none") {
-        if (input) input.style.display = "none"
-        btn.textContent = "Изменить статус";
-        btn.classList.add("main__tasks-card-btn_none")
-    } else if (currentSubjectTasks[i].options === "select") {
-
-    }
-}
-
-
-// В функции которая открывает модалку, должна быть регистрация обработчиков. Если я открыл модалку - я добавляю лисенеры, если закрываю модалку, то их удаляю
-
-const infoButtons = document.getElementsByClassName("main__tasks-card-footer-info") // кнопка информации в карточке
-const infoBlock = document.getElementsByClassName("main__tasks-card-module-info") // окно информации в карточке
-const filterButton = document.getElementById("filter-btn") // кнопка фильтра на странице
-const filterBlock = document.getElementById("module-filter") // окно фильтра на странице
-const filterBtnSearch = document.getElementById("filter-btn-search") // кнопка применение фильтра
-
 function filterListener() { // функция, которая считывает все выбранные позиции фильтра и передает их
     const filterSelect = document.getElementById("filter-select")
     const filterSolved = document.querySelector('input[name="isSolved"]:checked')
@@ -288,131 +361,48 @@ function filterListener() { // функция, которая считывает
     const foundByFavorite = filterByFavorite(currentSubjectTasks, filterFavoriteValue)
 }
 
-function toggleFilter() { // функция выключения и выключения окна фильтра
-    const block = filterBlock
-    let isHidden = block.style.display === 'none' || block.style.display === ''
-
-    if (isHidden) {
-        block.style.display = 'flex'
-        filterBtnSearch.addEventListener('click', filterListener)
-
-    } else {
-        block.style.display = 'none'
-        filterBtnSearch.removeEventListener('click', filterListener)
-    }
-}
-
-function toggleInfoModule(index) { // функция выключения и выключения окна информации в карточке
-    const block = infoBlock[index]
-    let isHidden = block.style.display === 'none' || block.style.display === ''
-
-    if (isHidden) {
-        block.style.display = 'flex'
-    } else {
-        block.style.display = 'none'
-    }
-}
-
-tasksContainer.removeChild(templateCard) // со страницы убирается шаблон карточки
-
-const taskStatuses = document.getElementsByClassName("main__tasks-card-footer-status-color") // из карточки достается значение решения (решено или нет)
-currentSubjectTasks = syncWithLS(currentSubjectTasks, taskStatuses) // подтягиваем статусы решено/избранное из localStorage и обновляем интерфейс
-const answerInputs = document.getElementsByClassName("main__tasks-card-input") // по классу находим поля ввода карточки
-const answerButtons = document.getElementsByClassName("main__tasks-card-btn") // по классу находим кнопки отправки ответа
-const favoriteButtons = document.getElementsByClassName("main__tasks-card-footer-favorite") // по классу находим кнопки избранного
-const inputValues = new Array(answerInputs.length).fill('') // создается пустой список длиной равной количеству полей ввода
-const idSearchInput = document.getElementById("id-search-input") // по id находится поле ввода
-const idSearchBtn = document.getElementById("id-search-button")
-
-for (let i = 0; i < answerInputs.length; i++) { // слушание каждого поля ввода
-    answerInputs[i].addEventListener('input', (event) => {
-        inputValues[i] = event.target.value
-    })
-    answerButtons[i].addEventListener('click', (event) => { // // при клике проверяем ответ пользователя и обновляем статус задания
-        if (inputValues[i].toLowerCase().trim() === currentSubjectTasks[i].correct_answer.toLowerCase().trim()) {
-            updateTask(currentSubjectTasks, {
-                ...currentSubjectTasks[i],
-                is_solved: true,
-            })
-            updateIsSolvedUI(taskStatuses[i], true)
-        } else {
-            updateTask(currentSubjectTasks, {
-                ...currentSubjectTasks[i],
-                is_solved: false,
-            })
-            updateIsSolvedUI(taskStatuses[i], false)
-        }
-    })
-}
-
-for (let i = 0; i < favoriteButtons.length; i++) { // слушание каждой кнопки добавления в избранное
-    updateFavoriteUI(favoriteButtons[i], currentSubjectTasks[i].is_favorite)
-    favoriteButtons[i].addEventListener('click', () => {
-        toggleFavorite(currentSubjectTasks, i, favoriteButtons[i])
-    });
-}
-
-for (let i = 0; i < infoButtons.length; i++) { // слушание каждой кнопки открытия окна информации
-    infoButtons[i].addEventListener('click', () => {
-        toggleInfoModule(i);
-    });
-}
-
-filterButton.addEventListener("click", () => { // слушание кнопки открытия окна фильтра
-    toggleFilter();
-})
-
-idSearchInput.addEventListener("input", (event) => { // слушание поля ввода номера задания
-
-    // ПОИСК ПО ТОЧНОМУ СОВПАДЕНИЮ
-    // const foundTask = filterById(currentSubjectTasks, event.target.value)
-    //
-    // for (let i = 0; i < currentSubjectTasks.length; i++) { // проходим по всем заданиям текущего предмета
-    //     const card = tasksContainer.children[i]; // берём соответствующую карточку из контейнера
-    //     if (!card) continue; // если карточка не найдена (на всякий случай), пропускаем итерацию
-    //
-    //     // если ничего не найдено, показываем все
-    //     if (!foundTask) {
-    //         card.classList.remove("hidden") // показываем все
-    //
-    //     // если id текущего задания совпадает с найденным
-    //     } else if (currentSubjectTasks[i].id === foundTask.id) {
-    //         card.classList.remove("hidden") // показываем найденное
-    //
-    //     // если карточка не совпадает с найденным заданием
-    //     } else {
-    //         card.classList.add("hidden") // скрываем
-    //     }
-    // }
-
-    // ПОИСК ПО ЧАСТИЧНОМУ СОВПАДЕНИЮ
-    const foundTask = event.target.value.trim()
-
+function searchById() { // функция поиска задания по его ID
+    const idSearchInput = document.getElementById("id-search-input") // по id находится поле ввода
+    const tasksContainer = document.getElementById("tasks-container") // по id находится блок с карточками
+    const foundTask = idSearchInput.value.trim() // берем значение из поля ввода
+    
     if (!foundTask) { // если пусто, показываем все
-        for (let i = 0; i < currentSubjectTasks.length; i++) {
-            const card = tasksContainer.children[i];
-            if (card) card.classList.remove("hidden");
+        for (let i = 0; i < tasksContainer.children.length; i++) {
+            const card = tasksContainer.children[i]
+            if (card) card.classList.remove("hidden")
         }
-        return;
+        return
     }
-
-    for (let i = 0; i < currentSubjectTasks.length; i++) {
-        const card = tasksContainer.children[i];
-        // Приводим id задания к строке
+    
+    for (let i = 0; i < tasksContainer.children.length; i++) { // ищем частичные совпадения
+        const card = tasksContainer.children[i]
+        // Приводим id задания к строке и ищем частичное совпадение
         if (String(currentSubjectTasks[i].id).includes(foundTask)) {
-            card.classList.remove("hidden"); // показываем совпадение
+            card.classList.remove("hidden") // показываем совпадение
         } else {
-            card.classList.add("hidden"); // скрываем все остальные
+            card.classList.add("hidden") // скрываем все остальные
         }
     }
-})
+}
 
-
-window.addEventListener('beforeunload', () => { // при закрытии окна удалить все слушатели
-    answerInputs.forEach((answerInput, index) => {
-        answerInputs[index].removeEventListener('change')
-        answerButtons[index].removeEventListener('click')
-        infoButtons[index].removeEventListener('click')
-    })
-    alert("Очистка успешна.")
+const tasksData = JSON.parse(tasksDataJson).tasks // из списка заданий достаем массив заданий
+const subjectId = new URLSearchParams(window.location.search).get('subjectId') // из ссылки берется параметр subjectId
+const subjectTitle = document.getElementById("subjectTitle"); // по id берется заголовок страницы с заданиями
+let currentSubjectTasks = tasksData.filter((task) => { // массив заданий согласно предмету
+    return task.subject_id === subjectId
 })
+let filteredTasks = structuredClone(currentSubjectTasks) // массив, который будет отображать задания подходящие под фильтр
+subjectTitle.innerHTML = filteredTasks[0].subject // В заголовок страницы вставляется название предмета
+
+render(filteredTasks) // отображение карточек на странице
+
+filteredTasks = syncWithLS(filteredTasks) // подтягиваем статусы решено/избранное из localStorage и обновляем интерфейс
+currentSubjectTasks = structuredClone(filteredTasks)
+
+initAnswerCheckerListeners(filteredTasks)
+initInfoClickListeners()
+initFavoriteCheckerListeners(filteredTasks)
+initSearchListener()
+initFilterToggleListener()
+
+initWindowListener()

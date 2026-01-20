@@ -21,6 +21,7 @@
         @include section;
         position: relative;
         background: url("../materials/1section-bg.png") center/cover no-repeat;
+        height: 100vh;
     }
 
     &__functions {
