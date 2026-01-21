@@ -53,6 +53,10 @@
         justify-content: space-between;
         padding: 0 40px;
 
+        @media (max-width: 470px) {
+            padding: 0 20px;
+        }
+
     }
 
     &__logo {
@@ -62,6 +66,10 @@
         gap: 20px;
         text-decoration: none;
 
+        @media (max-width: 470px) {
+            gap: 10px;
+        }
+
         &-img {
 
         }
@@ -70,6 +78,14 @@
             color: $dark-blue;
             font-size: 22px;
             font-family: 'PT-Sans-700', sans-serif;
+
+            @media (max-width: 450px) {
+                font-size: 18px;
+            }
+
+            @media (max-width: 350px) {
+                width: 75px;
+            }
         }
     }
 

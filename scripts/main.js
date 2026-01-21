@@ -168,6 +168,28 @@ function updateTask(tasks, task) {
     localStorage.setItem('tasks', JSON.stringify(tasksWithoutCurrent))
 }
 
+// Функция добавления задания в избранное
+// function toggleFavorite(tasks, taskIndex, elem) {
+    // tasks[taskIndex].is_favorite = !tasks[taskIndex].is_favorite;
+    //
+    // let savedTasks = [];
+    // try {
+    //     savedTasks = JSON.parse(localStorage.getItem('tasks')) ?? [];
+    // } catch (e) {
+    //     console.error(e);
+    // }
+    //
+    // const tasksWithoutCurrent = savedTasks.filter(t => t.id !== tasks[taskIndex].id);
+    // tasksWithoutCurrent.push({
+    //     id: tasks[taskIndex].id,
+    //     is_favorite: tasks[taskIndex].is_favorite,
+    //     is_solved: tasks[taskIndex].is_solved
+    // });
+    // localStorage.setItem('tasks', JSON.stringify(tasksWithoutCurrent));
+    //
+    // updateFavoriteUI(elem, tasks[taskIndex].is_favorite);
+// }
+
 // Функция обновляющая статус задания (решено верно или не верно)
 function updateIsSolvedUI(elem, isCorrect) {
     if (isCorrect) {
@@ -406,3 +428,26 @@ initSearchListener()
 initFilterToggleListener()
 
 initWindowListener()
+
+
+
+// ПОИСК ПО ЧАСТИЧНОМУ СОВПАДЕНИЮ
+// const foundTask = event.target.value.trim()
+//
+// if (!foundTask) { // если пусто, показываем все
+//     for (let i = 0; i < currentSubjectTasks.length; i++) {
+//         const card = tasksContainer.children[i];
+//         if (card) card.classList.remove("hidden");
+//     }
+//     return;
+// }
+//
+// for (let i = 0; i < currentSubjectTasks.length; i++) {
+//     const card = tasksContainer.children[i];
+//     // Приводим id задания к строке
+//     if (String(currentSubjectTasks[i].id).includes(foundTask)) {
+//         card.classList.remove("hidden"); // показываем совпадение
+//     } else {
+//         card.classList.add("hidden"); // скрываем все остальные
+//     }
+// }
