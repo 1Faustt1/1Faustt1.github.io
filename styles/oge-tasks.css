@@ -504,6 +504,8 @@
 .main__tasks-card-description {
   font-size: 16px;
   margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 .main__tasks-card-form {
   display: flex;

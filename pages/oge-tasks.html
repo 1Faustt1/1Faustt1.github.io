@@ -56,11 +56,11 @@
         <section class="main__headbar">
             <div class="main__headbar-container">
                 <button id="filter-btn" class="main__headbar-filter"><img class="main__headbar-filter-img" src="../materials/filter.svg"></button>
-                <div class="main__headbar-pages">
-                    <button class="main__headbar-pages-page">1</button>
-                    <button class="main__headbar-pages-page">2</button>
-                    <button class="main__headbar-pages-page">3</button>
-                </div>
+<!--                <div class="main__headbar-pages">-->
+<!--                    <button class="main__headbar-pages-page">1</button>-->
+<!--                    <button class="main__headbar-pages-page">2</button>-->
+<!--                    <button class="main__headbar-pages-page">3</button>-->
+<!--                </div>-->
                 <button class="main__headbar-generator"><img class="main__headbar-generator-img" src=""></button>
                 <div id="module-filter" class="main__tasks-card-module main__tasks-card-module-filter">
                     <div class="main__tasks-card-module-header">
@@ -123,7 +123,7 @@
                         </div>
                         <div class="main__tasks-card-module-filter-form-buttons">
                             <button type="button" class="main__tasks-card-module-filter-form-buttons-search" id="filter-btn-search">Найти</button>
-                            <button type="reset" class="main__tasks-card-module-filter-form-buttons-reset">Сбросить фильтр</button>
+                            <button type="reset" class="main__tasks-card-module-filter-form-buttons-reset" id="filter-btn-reset">Сбросить фильтр</button>
                         </div>
                     </form>
                 </div>
@@ -131,37 +131,37 @@
         </section>
 
         <section class="main__tasks">
-            <div id="tasks-container" class="main__tasks-container">
-                <div id="template-card" class="main__tasks-card hidden">
-                    <h1 class="main__tasks-card-title"></h1>
-                    <p class="main__tasks-card-description"></p>
-                    <div class="main__tasks-card-form">
-                        <input class="main__tasks-card-input" type="text" placeholder="Введите ответ">
-                        <button class="main__tasks-card-btn">Ответить</button>
+            <div id="template-card" class="main__tasks-card hidden">
+                <h1 class="t--main__tasks-card-title"></h1>
+                <p class="t--main__tasks-card-description"></p>
+                <div class="t--main__tasks-card-form">
+                    <input class="t--main__tasks-card-input" type="text" placeholder="Введите ответ">
+                    <button class="t--main__tasks-card-btn">Ответить</button>
+                </div>
+                <div class="t--main__tasks-card-footer">
+                    <div class="t--main__tasks-card-footer-left">
+                        <p id="task-id" class="t--main__tasks-card-footer-id">Номер: 000fff</p>
+                        <p id="task-status" class="t--main__tasks-card-footer-status">Статус задания: <span class="t--main__tasks-card-footer-status-color">НЕ РЕШЕНО</span></p>
                     </div>
-                    <div class="main__tasks-card-footer">
-                        <div class="main__tasks-card-footer-left">
-                            <p id="task-id" class="main__tasks-card-footer-id">Номер: 000fff</p>
-                            <p id="task-status" class="main__tasks-card-footer-status">Статус задания: <span class="main__tasks-card-footer-status-color">НЕ РЕШЕНО</span></p>
-                        </div>
-                        <div class="main__tasks-card-footer-right">
-                            <button class="main__tasks-card-footer-info">i</button>
-                            <button class="main__tasks-card-footer-favorite">
-                                <svg class="main__tasks-card-footer-favorite-svg" width="30" height="30" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.5736 5.65454C10.7208 5.97039 11.0095 6.19804 11.3509 6.26782L15.8246 7.18091L12.433 10.4417C12.1672 10.6971 12.0467 11.0691 12.1126 11.4319L12.8861 15.6897L9.60385 13.4446V13.4436C9.23211 13.1894 8.74226 13.1874 8.3685 13.4387L4.99936 15.7043L5.80502 11.4397C5.87495 11.0693 5.75039 10.6891 5.47495 10.4319L1.99057 7.177L6.47592 6.26782C6.81005 6.20003 7.09403 5.98097 7.24448 5.67505L8.95834 2.18579L10.5736 5.65454Z" stroke="#0F6D7E" stroke-width="2"/>
-                                </svg>
-                            </button>
-                        </div>
+                    <div class="t--main__tasks-card-footer-right">
+                        <button class="t--main__tasks-card-footer-info">i</button>
+                        <button class="t--main__tasks-card-footer-favorite">
+                            <svg class="t--main__tasks-card-footer-favorite-svg" width="30" height="30" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.5736 5.65454C10.7208 5.97039 11.0095 6.19804 11.3509 6.26782L15.8246 7.18091L12.433 10.4417C12.1672 10.6971 12.0467 11.0691 12.1126 11.4319L12.8861 15.6897L9.60385 13.4446V13.4436C9.23211 13.1894 8.74226 13.1874 8.3685 13.4387L4.99936 15.7043L5.80502 11.4397C5.87495 11.0693 5.75039 10.6891 5.47495 10.4319L1.99057 7.177L6.47592 6.26782C6.81005 6.20003 7.09403 5.98097 7.24448 5.67505L8.95834 2.18579L10.5736 5.65454Z" stroke="#0F6D7E" stroke-width="2"/>
+                            </svg>
+                        </button>
                     </div>
-                    <div id="module-info" class="main__tasks-card-module main__tasks-card-module-info">
-                        <div class="main__tasks-card-module-header">
-                            <p class="main__tasks-card-module-header-title">СВОЙСТВА ЗАДАНИЯ</p>
-                        </div>
+                </div>
+                <div id="module-info" class="t--main__tasks-card-module t--main__tasks-card-module-info">
+                    <div class="t--main__tasks-card-module-header">
+                        <p class="t--main__tasks-card-module-header-title">СВОЙСТВА ЗАДАНИЯ</p>
                     </div>
                 </div>
             </div>
+            <div id="tasks-container" class="main__tasks-container"></div>
         </section>
     </main>
-    <script src="../scripts/main.js"></script>
+    <!-- Подключаем main.js как ES6 модуль для поддержки import/export -->
+    <script type="module" src="../scripts/main.js"></script>
 </body>
 </html>
