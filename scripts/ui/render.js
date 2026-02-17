@@ -1,7 +1,3 @@
-// ========================================
-// Функция отрендеривания карточек заданий на странице
-// ========================================
-
 import { getTaskTheme } from '../data/taskTopics.js'
 
 function getAnswerTypeLabel(option) {
@@ -11,24 +7,56 @@ function getAnswerTypeLabel(option) {
     return 'Не указан'
 }
 
+function getAdditionalTableMarkup(tableData) {
+    if (!Array.isArray(tableData) || tableData.length === 0) return ''
+
+    const rows = tableData
+        .map((row) => {
+            if (!Array.isArray(row)) return ''
+            const cells = row.map((cell) => `<td>${cell}</td>`).join('')
+            return `<tr>${cells}</tr>`
+        })
+        .join('')
+
+    if (!rows) return ''
+
+    return `
+        <div class="t--main__tasks-card-additional-table-wrap">
+            <table class="t--main__tasks-card-additional-table">
+                <tbody>
+                    ${rows}
+                </tbody>
+            </table>
+        </div>
+    `
+}
+
 export function render(tasks) {
-    // Получаем шаблон карточки и контейнер для размещения карточек
-    const templateCard = document.getElementById("template-card") // по id находится шаблон карточки
-    const tasksContainer = document.getElementById("tasks-container") // по id находится блок где будут находиться все карточки с заданиями
+    const templateCard = document.getElementById('template-card')
+    const tasksContainer = document.getElementById('tasks-container')
+    const tasksCount = document.getElementById('tasks-count')
     tasksContainer.innerHTML = ''
-    // Проходим по всем заданиям и создаём карточку для каждого
-    for (let i = 0; i < tasks.length; i++) { // пока все задания не обработаются цикл работает
-        const card = templateCard.cloneNode(true) // копируется шаблон карточки
-        const input = card.querySelector('.t--main__tasks-card-input') // берется поле ввода карточка
-        const btn = card.querySelector('.t--main__tasks-card-btn') // берется кнопка ответить из карточки
+    if (tasksCount) {
+        tasksCount.textContent = `Отображено задач: ${tasks.length}`
+    }
+
+    for (let i = 0; i < tasks.length; i++) {
+        const card = templateCard.cloneNode(true)
         const moduleInfo = card.querySelector('.t--main__tasks-card-module-info')
 
-        card.classList.remove("hidden") // убираем класс hidden, чтобы отобразить карточку
-        card.childNodes[1].innerHTML = tasks[i].name // вписывается заголовок
-        card.childNodes[3].innerHTML = tasks[i].description // вписывается описание (само задание)
-        card.childNodes[7].childNodes[1].childNodes[1].innerHTML = "Номер: " + tasks[i].id // вписывается идентификационный номер задания
+        card.classList.remove('hidden')
+        card.childNodes[1].innerHTML = tasks[i].name
+        card.childNodes[3].innerHTML = tasks[i].description
+        card.childNodes[7].childNodes[1].childNodes[1].innerHTML = 'Номер: ' + tasks[i].id
+
+        const descriptionElem = card.querySelector('.t--main__tasks-card-description')
+        if (descriptionElem) {
+            descriptionElem.insertAdjacentHTML('afterend', getAdditionalTableMarkup(tasks[i].additional_description_table))
+        }
+
         const taskTheme = getTaskTheme(tasks[i].subject_id, tasks[i].number_of_oge)
         const answerType = getAnswerTypeLabel(tasks[i].option)
+
         moduleInfo.insertAdjacentHTML('beforeend', `
             <div class="t--main__tasks-card-module-info-content">
                 <p><b>Номер задания из КИМ:</b> ${tasks[i].number_of_oge}</p>
@@ -36,17 +64,20 @@ export function render(tasks) {
                 <p><b>Тип ответа:</b> ${answerType}</p>
             </div>
         `)
+
         card.innerHTML = card.innerHTML.replaceAll('t--', '')
-        tasksContainer.appendChild(card) // готовая карточка добавляется в блок
 
-        // вариации ответа на задание
-        if (tasks[i].option === "none") {
-            if (input) input.style.display = "none"
-            btn.textContent = "Изменить статус";
-            btn.classList.add("main__tasks-card-btn_none")
-        } else if (tasks[i].options === "select") {
+        const renderedInput = card.querySelector('.main__tasks-card-input')
+        const renderedBtn = card.querySelector('.main__tasks-card-btn')
 
+        if (tasks[i].option === 'none') {
+            if (renderedInput) renderedInput.style.display = 'none'
+            if (renderedBtn) {
+                renderedBtn.textContent = 'Изменить статус'
+                renderedBtn.classList.add('main__tasks-card-btn_none')
+            }
         }
+
+        tasksContainer.appendChild(card)
     }
-    // tasksContainer.removeChild(templateCard) // со страницы убирается шаблон карточки
 }

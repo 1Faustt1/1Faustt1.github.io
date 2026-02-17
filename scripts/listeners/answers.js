@@ -1,40 +1,42 @@
-// ========================================
-// Слушатель для проверки ответов на задания
-// ========================================
+// Answer-check listeners
 
 export function initAnswerCheckerListeners(tasks) {
-    const answerInputs = document.getElementsByClassName("main__tasks-card-input") // по классу находим поля ввода карточки
-    const inputValues = new Array(answerInputs.length).fill('') // создается пустой список длиной равной количеству полей ввода
-    const answerButtons = document.getElementsByClassName("main__tasks-card-btn") // по классу находим кнопки отправки ответа
-    const taskStatuses = document.getElementsByClassName("main__tasks-card-footer-status-color") // из карточки достается значение решения (решено или нет)
-    for (let i = 0; i < inputValues.length; i++) { // слушание каждого поля ввода
+    const answerInputs = document.getElementsByClassName('main__tasks-card-input')
+    const inputValues = new Array(answerInputs.length).fill('')
+    const answerButtons = document.getElementsByClassName('main__tasks-card-btn')
+    const taskStatuses = document.getElementsByClassName('main__tasks-card-footer-status-color')
+
+    for (let i = 0; i < inputValues.length; i++) {
         answerInputs[i].addEventListener('input', (event) => {
             inputValues[i] = event.target.value
         })
-        answerButtons[i].addEventListener('click', (event) => { // // при клике проверяем ответ пользователя и обновляем статус задания
-            const isSolved = inputValues[i].toLowerCase().trim() === tasks[i].correct_answer.toLowerCase().trim()
-            if (isSolved) {
-                window.updateTask(tasks, {
-                    ...tasks[i],
-                    is_solved: true,
-                })
-                window.updateIsSolvedUI(taskStatuses[i], true)
+
+        answerButtons[i].addEventListener('click', () => {
+            let nextSolvedStatus = null
+
+            if (tasks[i].option === 'none') {
+                nextSolvedStatus = true
             } else {
-                window.updateTask(tasks, {
-                    ...tasks[i],
-                    is_solved: false,
-                })
-                window.updateIsSolvedUI(taskStatuses[i], false)
+                const isSolved = inputValues[i].toLowerCase().trim() === tasks[i].correct_answer.toLowerCase().trim()
+                nextSolvedStatus = isSolved
             }
-            tasks[i].is_solved = isSolved
+
+            window.updateTask(tasks, {
+                ...tasks[i],
+                is_solved: nextSolvedStatus,
+            })
+
+            tasks[i].is_solved = nextSolvedStatus
             const sourceTask = window.currentSubjectTasks.find((task) => task.id === tasks[i].id)
             if (sourceTask) {
-                sourceTask.is_solved = isSolved
+                sourceTask.is_solved = nextSolvedStatus
             }
+
+            window.updateIsSolvedUI(taskStatuses[i], nextSolvedStatus)
+
             if (typeof window.filterListener === 'function') {
                 window.filterListener()
             }
         })
     }
 }
-

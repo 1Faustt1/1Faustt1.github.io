@@ -118,11 +118,9 @@
         }
 
         &-dots {
-            position: absolute;
-            left: 50%;
-            bottom: 14px;
-            transform: translateX(-50%);
+            position: relative;
             z-index: 1;
+            margin-top: 20px;
             display: flex;
             align-items: center;
             justify-content: center;

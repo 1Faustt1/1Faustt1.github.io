@@ -1,24 +1,31 @@
-// ========================================
-// Функции обновления визуального состояния UI
-// ========================================
+// UI state update helpers
 
-// Обновляет отображение статуса решения задания (ВЕРНО/НЕ ВЕРНО)
-export function updateIsSolvedUI(elem, isCorrect) {
-    if (isCorrect) {
-        elem.textContent = "ВЕРНО"
-        elem.style.color = "green"
+const SOLVED_TEXT = 'ВЕРНО'
+const WRONG_TEXT = 'НЕ ВЕРНО'
+const UNSOLVED_TEXT = 'НЕ РЕШЕНО'
+
+// Update solved status label: true/false/null
+export function updateIsSolvedUI(elem, solvedStatus) {
+    if (!elem) return
+
+    if (solvedStatus === true) {
+        elem.textContent = SOLVED_TEXT
+        elem.style.color = 'green'
+    } else if (solvedStatus === false) {
+        elem.textContent = WRONG_TEXT
+        elem.style.color = 'red'
     } else {
-        elem.textContent = "НЕ ВЕРНО"
-        elem.style.color = "red"
+        elem.textContent = UNSOLVED_TEXT
+        elem.style.color = ''
     }
 }
 
-// Обновляет визуальное отображение кнопки избранного (закрашивает звёздочку)
+// Update favorite star fill
 export function updateFavoriteUI(elem, isFavorite) {
-    const favSVG = elem.querySelector(".main__tasks-card-footer-favorite-svg")
+    const favSVG = elem.querySelector('.main__tasks-card-footer-favorite-svg')
     if (isFavorite) {
-        favSVG.setAttribute('fill', 'gold');
+        favSVG.setAttribute('fill', 'gold')
     } else {
-        favSVG.setAttribute('fill', 'transparent');
+        favSVG.setAttribute('fill', 'transparent')
     }
 }

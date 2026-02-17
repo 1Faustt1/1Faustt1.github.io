@@ -20,6 +20,7 @@ import { initFavoriteCheckerListeners } from './listeners/favorites.js'
 import { initSearchListener } from './listeners/search.js'
 import { initFilterListener } from './listeners/filter.js'
 import { initGeneratorListener } from './listeners/generator.js'
+import { initScrollTopListener } from './listeners/scrollTop.js'
 import { initWindowListener } from './listeners/window.js'
 
 // Импорт функций поиска по ID и слушателя фильтра
@@ -81,5 +82,6 @@ initFavoriteCheckerListeners(window.filteredTasks)
 initSearchListener()
 initFilterListener()
 initGeneratorListener()
+initScrollTopListener()
 
 initWindowListener()

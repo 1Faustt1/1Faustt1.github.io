@@ -1,4 +1,4 @@
-// ========================================
+﻿// ========================================
 // База данных с заданиями
 // ========================================
 // Этот модуль содержит всю базу данных заданий в формате JSON
@@ -20,7 +20,7 @@ export const tasksDataJson = `{
       "option": "input",
       "correct_answer": "тумбочка",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Информатика",
@@ -37,7 +37,7 @@ export const tasksDataJson = `{
       "option": "input",
       "correct_answer": "алый",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Информатика",
@@ -54,7 +54,7 @@ export const tasksDataJson = `{
       "option": "input",
       "correct_answer": "думать",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Информатика",
@@ -77,7 +77,7 @@ export const tasksDataJson = `{
       "option": "input",
       "correct_answer": "овод",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Информатика",
@@ -103,7 +103,7 @@ export const tasksDataJson = `{
       "option": "input",
       "correct_answer": "21212",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Информатика",
@@ -118,7 +118,7 @@ export const tasksDataJson = `{
       "option": "input",
       "correct_answer": "11001100",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Информатика",
@@ -132,21 +132,22 @@ export const tasksDataJson = `{
 не превышающих 30 000, каждое в отдельной строке.\\n\\n\
 Программа должна вывести одно десятичное число – наибольший элемент последовательности, запись которого в 7-ричной системе счисления оканчивается <b>нечётной</b> цифрой,\
 или «NO», если среди входных данных таких элементов нет.\\n\\n\
-<i>Пример работы программы</i>\\n\\n\
-Входные данные   | Выходные данные\\n\
-6                             | 71\\n\
-12                           |   \\n\
-15                           |   \\n\
-10                           |   \\n\
-71                           |   \\n\
-50                           |   \\n\
-11                           |   ",
-      "additional_description_table": null,
+<i>Пример работы программы</i>",
+      "additional_description_table": [
+        ["Входные данные", "Выходные данные"],
+        ["6", "71"],
+        ["12"],
+        ["15"],
+        ["10"],
+        ["71"],
+        ["50"],
+        ["11"]
+      ],
       "media": "",
       "option": "none",
       "correct_answer": "",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Информатика",
@@ -161,7 +162,7 @@ export const tasksDataJson = `{
       "option": "input",
       "correct_answer": "233",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Информатика",
@@ -176,7 +177,7 @@ export const tasksDataJson = `{
       "option": "input",
       "correct_answer": "4",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Информатика",
@@ -191,7 +192,7 @@ export const tasksDataJson = `{
       "option": "input",
       "correct_answer": "50",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
 
 
@@ -201,13 +202,17 @@ export const tasksDataJson = `{
       "id": "F8E641",
       "subject_id": "ENG001",
       "name": "Дайте развернутый ответ.",
-      "description": "Task 3. You are going to give a talk about your school. You will have to start in 1.5 minutes and speak for not more than 2 minutes (10–12 sentences). Remember to say: what your typical school day is like; what your favourite subject is, and why; what you like most about your school; what your attitude to your school life is. You have to talk continuously.",
+      "description": "Task 3. You are going to give a talk about your school. You will have to start in 1.5 minutes and speak for not more than 2 minutes (10–12 sentences).\\n\\n\
+Remember to say:\\n\
+\\twhat your typical school day is like;\\n\
+\\twhat your favourite subject is, and why; what you like most about your school;\\n\
+\\twhat your attitude to your school life is. You have to talk continuously.",
       "additional_description_table": null,
       "media": "",
       "option": "none",
       "correct_answer": "",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Английский язык",
@@ -215,13 +220,27 @@ export const tasksDataJson = `{
       "id": "303746",
       "subject_id": "ENG001",
       "name": "Установите соответствие и впишите ответ.",
-      "description": "Вы проводите информационный поиск в ходе выполнения проектной работы. Определите, в каком из текстов A–F содержатся ответы на интересующие Вас вопросы 1–7. Один из вопросов останется без ответа. Занесите Ваши ответы в таблицу. 1. Why was Vladivostok called so? 2. Who founded the city of Vladivostok? 3. Why has the city quickly become important? 4. What is the climate of the city area? 5. How is it possible to travel to the city? 6. What are the city sights one should visit? 7. What makes Vladivostok buildings unique? A. Vladivostok is located at the same latitude as Russian subtropical sea resort Sochi, but its average annual temperature is nearly 10 degrees lower because of the Siberian Anticyclone. It brings cold winds from Yakutia for much of the winter season. Thus, the winter in Vladivostok is typical of Manchuria – it is cold, clear, and very windy. The snow is rare and, in some years, may not fall at all. The summer is more comfortable, warm, wet, and partly cloudy. B. The first thing that will catch the eye of every tourist right from the platform of the railway station is a unique building of the terminal of the Trans-Siberian Railway. It was built more than a century ago. The sea terminal, located nearby, is also a must-see while going on a tour of Vladivostok. Like other port cities, Vladivostok celebrates the Russian fleet with a number of museums. No doubt, the legendary S-56 submarine which played a great role in the Great Patriotic War is worth visiting. C. The most important city in the Russian Far East, Vladivostok is known as the town of sailors. It was founded about 160 years ago as a small military port. Despite being one of the youngest Russian cities, Vladivostok managed to find its way to the list of the best Russian cities to visit. Its name came from the combination of two words, vladet (meaning \\\"to own\\\") and vostok (meaning \\\"east\\\"), helping anyone who wants to find Vladivostok on a map. D. The Trans-Siberian Railway was built to connect Asian and European Russia. The final stop on the way, or the first if passengers are travelling west, is in Vladivostok. The city's strategic location and port led to the fact that Vladivostok has eventually become a large and busy centre in North-East Asia. After its foundation in 1860 as a military post, Vladivostok soon became the centre of international commerce and development. E. Despite the fact that Vladivostok has always been a Russian city, elements of the Chinese and Japanese architecture borrowed from the city's nearest neighbours can be seen even during a simple walk down the city streets. At the same time, the architecture of Vladivostok leaves no doubt that this is a Russian city. So, this unique place combines a lot of different features. F. As a rule, people prefer to spend a couple of days exploring Vladivostok within their long tour to the Far East, instead of considering the city as an independent holiday destination. They may fly to Vladivostok or go by rail choosing the famous Trans-Siberian express which is very popular with tourists. The Trans-Siberian Railway is the longest railway route in the world. So, going by train to Vladivostok can easily become a journey of a lifetime. Запишите в таблицу выбранные цифры под соответствующими буквами.",
+      "description": "Вы проводите информационный поиск в ходе выполнения проектной работы. Определите, в каком из текстов A–F содержатся ответы на интересующие Вас вопросы 1–7. Один из вопросов останется без ответа. Занесите Ваши ответы в таблицу.\\n\\n\
+1. Why was Vladivostok called so?\\n\
+2. Who founded the city of Vladivostok?\\n\
+3. Why has the city quickly become important?\\n\
+4. What is the climate of the city area?\\n\
+5. How is it possible to travel to the city?\\n\
+6. What are the city sights one should visit?\\n\
+7. What makes Vladivostok buildings unique?\\n\\n\
+A. Vladivostok is located at the same latitude as Russian subtropical sea resort Sochi, but its average annual temperature is nearly 10 degrees lower because of the Siberian Anticyclone. It brings cold winds from Yakutia for much of the winter season. Thus, the winter in Vladivostok is typical of Manchuria – it is cold, clear, and very windy. The snow is rare and, in some years, may not fall at all. The summer is more comfortable, warm, wet, and partly cloudy.\\n\\n\
+B. The first thing that will catch the eye of every tourist right from the platform of the railway station is a unique building of the terminal of the Trans-Siberian Railway. It was built more than a century ago. The sea terminal, located nearby, is also a must-see while going on a tour of Vladivostok. Like other port cities, Vladivostok celebrates the Russian fleet with a number of museums. No doubt, the legendary S-56 submarine which played a great role in the Great Patriotic War is worth visiting.\\n\\n\
+C. The most important city in the Russian Far East, Vladivostok is known as the town of sailors. It was founded about 160 years ago as a small military port. Despite being one of the youngest Russian cities, Vladivostok managed to find its way to the list of the best Russian cities to visit. Its name came from the combination of two words, vladet (meaning \\\"to own\\\") and vostok (meaning \\\"east\\\"), helping anyone who wants to find Vladivostok on a map.\\n\\n\
+D. The Trans-Siberian Railway was built to connect Asian and European Russia. The final stop on the way, or the first if passengers are travelling west, is in Vladivostok. The city's strategic location and port led to the fact that Vladivostok has eventually become a large and busy centre in North-East Asia. After its foundation in 1860 as a military post, Vladivostok soon became the centre of international commerce and development.\\n\\n\
+E. Despite the fact that Vladivostok has always been a Russian city, elements of the Chinese and Japanese architecture borrowed from the city's nearest neighbours can be seen even during a simple walk down the city streets. At the same time, the architecture of Vladivostok leaves no doubt that this is a Russian city. So, this unique place combines a lot of different features.\\n\\n\
+F. As a rule, people prefer to spend a couple of days exploring Vladivostok within their long tour to the Far East, instead of considering the city as an independent holiday destination. They may fly to Vladivostok or go by rail choosing the famous Trans-Siberian express which is very popular with tourists. The Trans-Siberian Railway is the longest railway route in the world. So, going by train to Vladivostok can easily become a journey of a lifetime.\\n\\n\
+Запишите в таблицу выбранные цифры под соответствующими буквами.",
       "additional_description_table": null,
       "media": "",
       "option": "select",
       "correct_answer": "627135",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Английский язык",
@@ -235,7 +254,7 @@ export const tasksDataJson = `{
       "option": "none",
       "correct_answer": "",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Английский язык",
@@ -249,7 +268,7 @@ export const tasksDataJson = `{
       "option": "input",
       "correct_answer": "second",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     }
   ]
 }`;

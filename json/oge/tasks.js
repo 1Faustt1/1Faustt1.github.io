@@ -12,7 +12,7 @@ const tasksDataJson = `{
       "option": "input",
       "correct_answer": "тумбочка",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Информатика",
@@ -26,7 +26,7 @@ const tasksDataJson = `{
       "option": "input",
       "correct_answer": "алый",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Информатика",
@@ -40,7 +40,7 @@ const tasksDataJson = `{
       "option": "input",
       "correct_answer": "думать",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Информатика",
@@ -57,7 +57,7 @@ const tasksDataJson = `{
       "option": "input",
       "correct_answer": "алый",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Английский язык",
@@ -71,7 +71,7 @@ const tasksDataJson = `{
       "option": "none",
       "correct_answer": "",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Английский язык",
@@ -85,7 +85,7 @@ const tasksDataJson = `{
       "option": "select",
       "correct_answer": "627135",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Английский язык",
@@ -99,7 +99,7 @@ const tasksDataJson = `{
       "option": "none",
       "correct_answer": "",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     },
     {
       "subject": "Английский язык",
@@ -113,7 +113,7 @@ const tasksDataJson = `{
       "option": "input",
       "correct_answer": "second",
       "is_favorite": false,
-      "is_solved": false
+      "is_solved": null
     }
   ]
 }`

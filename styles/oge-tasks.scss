@@ -101,6 +101,74 @@
     margin-top: calc($HEADER-HEIGHT + 40px);
     padding-bottom: 90px;
 
+    &__tasks-count {
+        @include container-width;
+        margin-top: -10px;
+        margin-bottom: 14px;
+        color: $dark-blue;
+        font-weight: 700;
+        font-size: 16px;
+
+        @media (max-width: 620px) {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__scroll-top {
+        position: fixed;
+        right: 18px;
+        bottom: calc(78px + env(safe-area-inset-bottom));
+        width: 44px;
+        height: 44px;
+        border: 2px solid $dark-blue;
+        border-radius: 50%;
+        background-color: $white;
+        color: $dark-blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(6px);
+        transition: opacity 0.2s, transform 0.2s, background-color 0.2s, color 0.2s;
+        box-shadow: 0 4px 10px $black-30;
+
+        &-icon {
+            display: block;
+            font-size: 24px;
+            line-height: 1;
+            font-weight: 900;
+            transform: translateY(-1px);
+        }
+
+        &:hover {
+            background-color: $dark-blue;
+            color: $white;
+        }
+
+        &:active {
+            @include active;
+        }
+
+        &_visible {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 620px) {
+            right: 10px;
+            bottom: calc(66px + env(safe-area-inset-bottom));
+            width: 40px;
+            height: 40px;
+        }
+    }
+
     #module-filter {
         position: relative;
         width: 100%;
@@ -560,6 +628,30 @@
 
                 @media (max-width: 640px) {
                     font-size: 14px;
+                }
+            }
+
+            &-additional-table-wrap {
+                width: 100%;
+                overflow-x: auto;
+                margin: 6px 0 14px;
+            }
+
+            &-additional-table {
+                width: 100%;
+                min-width: 280px;
+                border-collapse: collapse;
+                background-color: $white;
+                border: 1px solid $light-blue-30;
+                border-radius: 8px;
+                overflow: hidden;
+
+                td {
+                    border: 1px solid $light-blue-30;
+                    padding: 6px 10px;
+                    text-align: center;
+                    font-size: 14px;
+                    color: $black;
                 }
             }
 

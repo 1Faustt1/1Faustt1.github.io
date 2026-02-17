@@ -1,34 +1,36 @@
 import { render } from '../ui/render.js'
-import {syncWithLS} from "../storage/localStorage.js";
+import { syncWithLS } from '../storage/localStorage.js'
 import { initAnswerCheckerListeners } from '../listeners/answers.js'
 import { initInfoClickListeners } from '../listeners/info.js'
 import { initFavoriteCheckerListeners } from '../listeners/favorites.js'
 
-// Фильтр заданий по их ID
-export const filterById = (tasks, id) => tasks.filter(task => task.id.includes(id))
+export const filterById = (tasks, id) => tasks.filter((task) => task.id.includes(id))
 
-// Фильтр заданий по номеру из КИМ
-export const filterByNumberOfOge = (tasks, number) => tasks.filter(task => String(task.number_of_oge) === String(number))
+export const filterByNumberOfOge = (tasks, number) => tasks.filter((task) => String(task.number_of_oge) === String(number))
 
-// Фильтр заданий по избранным
-export const filterByFavorite = (tasks, isFavorite=null) => {
+export const filterByFavorite = (tasks, isFavorite = null) => {
     if (isFavorite === null) {
         return [...tasks]
     }
-    return tasks.filter(task => task.is_favorite === isFavorite)
+    return tasks.filter((task) => task.is_favorite === isFavorite)
 }
 
-// Фильтр заданий по решенным
+// true  -> only correct
+// false -> not solved yet (false + null)
 export const filterBySolved = (tasks, isSolved = null) => {
-    console.log(tasks, isSolved)
     if (isSolved === null) {
         return [...tasks]
     }
-    return tasks.filter(task => task.is_solved === isSolved)
+
+    if (isSolved === true) {
+        return tasks.filter((task) => task.is_solved === true)
+    }
+
+    return tasks.filter((task) => task.is_solved !== true)
 }
 
-export function filterListener() { // функция, которая считывает все выбранные позиции фильтра и передает их
-    const filterSelect = document.getElementById("filter-select")
+export function filterListener() {
+    const filterSelect = document.getElementById('filter-select')
     const filterSolved = document.querySelector('input[name="isSolved"]:checked')
     const filterFavorite = document.querySelector('input[name="isFavorite"]:checked')
 
@@ -52,10 +54,10 @@ export function filterListener() { // функция, которая считы�
         filterFavoriteValue = false
     }
 
-    // Применяем все фильтры по очереди для пересечения результатов
     window.filteredTasks = filterSelectValue === 'all'
         ? structuredClone(window.currentSubjectTasks)
         : filterByNumberOfOge(window.currentSubjectTasks, filterSelectValue)
+
     window.filteredTasks = filterBySolved(window.filteredTasks, filterSolvedValue)
     window.filteredTasks = filterByFavorite(window.filteredTasks, filterFavoriteValue)
 
@@ -64,7 +66,6 @@ export function filterListener() { // функция, которая считы�
     initAnswerCheckerListeners(window.filteredTasks)
     initInfoClickListeners()
     initFavoriteCheckerListeners(window.filteredTasks)
-    // console.log(window.filteredTasks, window.currentSubjectTasks)
 }
 
 export function filterReseter() {
