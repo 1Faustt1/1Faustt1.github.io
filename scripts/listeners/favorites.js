@@ -8,12 +8,19 @@ export function initFavoriteCheckerListeners(tasks) {
         window.updateFavoriteUI(favoriteButtons[i], tasks[i].is_favorite)
         favoriteButtons[i].addEventListener('click', () => {
             tasks[i].is_favorite = !tasks[i].is_favorite;
+            const sourceTask = window.currentSubjectTasks.find((task) => task.id === tasks[i].id)
+            if (sourceTask) {
+                sourceTask.is_favorite = tasks[i].is_favorite
+            }
 
             window.updateTask(tasks, {
                 ...tasks[i],
                 is_favorite: tasks[i].is_favorite,
             })
             window.updateFavoriteUI(favoriteButtons[i], tasks[i].is_favorite);
+            if (typeof window.filterListener === 'function') {
+                window.filterListener()
+            }
         });
     }
 }

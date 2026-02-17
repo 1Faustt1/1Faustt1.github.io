@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор ОГЭ | В разработке</title>
+    <style>
+        :root {
+            --dark-blue: #0F6D7E;
+            --light-blue: #5EB7C6;
+            --light-blue-30: rgba(94, 183, 198, 0.3);
+            --dark-gray: #E8E8E8;
+            --white: #ffffff;
+            --black-30: rgba(0, 0, 0, 0.30);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "PT Sans", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #f9fcfd 0%, #eef6f8 100%);
+            color: var(--dark-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .stub {
+            width: min(680px, 100%);
+            border: 2px solid var(--dark-blue);
+            border-radius: 16px;
+            background-color: var(--dark-gray);
+            box-shadow: 0 8px 20px var(--black-30);
+            overflow: hidden;
+        }
+
+        .stub__header {
+            background-color: var(--light-blue-30);
+            padding: 14px 18px;
+            border-bottom: 1px solid rgba(15, 109, 126, 0.2);
+        }
+
+        .stub__title {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .stub__content {
+            padding: 18px;
+            display: grid;
+            gap: 12px;
+            color: #1c3a41;
+        }
+
+        .stub__text {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .stub__actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .stub__btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 36px;
+            padding: 0 14px;
+            border: 2px solid var(--dark-blue);
+            border-radius: 10px;
+            background-color: var(--white);
+            color: var(--dark-blue);
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .stub__btn:hover {
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <section class="stub" role="alert" aria-live="polite">
+        <header class="stub__header">
+            <h1 class="stub__title">Страница генератора пока не готова</h1>
+        </header>
+        <div class="stub__content">
+            <p class="stub__text">Генерация вариантов ОГЭ находится в разработке.</p>
+            <p class="stub__text">Вернитесь к заданиям и попробуйте позже.</p>
+            <div class="stub__actions">
+                <a class="stub__btn" href="javascript:history.back()">Назад</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

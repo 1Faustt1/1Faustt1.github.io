@@ -11,18 +11,21 @@ import { syncWithLS, updateTask } from './storage/localStorage.js'
 // Импорт функций отрендеривания
 import { render } from './ui/render.js'
 import { updateIsSolvedUI, updateFavoriteUI } from './ui/updateUI.js'
-import { toggleFilter, toggleInfoModule, initFilterToggleListener } from './ui/toggle.js'
+import { toggleInfoModule } from './ui/toggle.js'
 
 // Импорт функций-слушателей
 import { initAnswerCheckerListeners } from './listeners/answers.js'
 import { initInfoClickListeners } from './listeners/info.js'
 import { initFavoriteCheckerListeners } from './listeners/favorites.js'
 import { initSearchListener } from './listeners/search.js'
+import { initFilterListener } from './listeners/filter.js'
+import { initGeneratorListener } from './listeners/generator.js'
 import { initWindowListener } from './listeners/window.js'
 
-// Импорт функции поиска по ID и слушателя фильтра
+// Импорт функций поиска по ID и слушателя фильтра
 import { searchById } from './filters/search.js'
 import { filterListener } from './filters/filter.js'
+import { initTaskNumbersFilter } from './filters/taskNumbersFilter.js'
 
 // Эти функции доступны из других модулей через window
 // TODO: убрать window и в каждом файле делать отдельные импорты функций
@@ -31,7 +34,7 @@ window.updateIsSolvedUI = updateIsSolvedUI
 window.updateFavoriteUI = updateFavoriteUI
 window.toggleInfoModule = toggleInfoModule
 window.searchById = searchById
-
+window.filterListener = filterListener
 
 
 // ========================================
@@ -45,7 +48,7 @@ const tasksData = JSON.parse(tasksDataJson).tasks
 const subjectId = new URLSearchParams(window.location.search).get('subjectId')
 
 // Получаем элемент заголовка страницы
-const subjectTitle = document.getElementById("subjectTitle")
+const subjectTitle = document.getElementById('subjectTitle')
 
 // Фильтруем задания по выбранному предмету
 window.currentSubjectTasks = tasksData.filter((task) => {
@@ -62,7 +65,12 @@ window.currentSubjectTasks = syncWithLS(window.currentSubjectTasks)
 window.filteredTasks = structuredClone(window.currentSubjectTasks)
 
 // Устанавливаем название предмета в заголовок
-subjectTitle.innerHTML = window.filteredTasks[0].subject
+if (window.filteredTasks.length > 0) {
+    subjectTitle.innerHTML = window.filteredTasks[0].subject
+}
+
+// Инициализируем список номеров заданий в фильтре под текущий предмет
+initTaskNumbersFilter(subjectId, window.currentSubjectTasks)
 
 
 // console.log(window.filteredTasks, window.currentSubjectTasks)
@@ -71,6 +79,7 @@ initAnswerCheckerListeners(window.filteredTasks)
 initInfoClickListeners()
 initFavoriteCheckerListeners(window.filteredTasks)
 initSearchListener()
-initFilterToggleListener()
+initFilterListener()
+initGeneratorListener()
 
 initWindowListener()

@@ -1,11 +1,14 @@
 import { render } from '../ui/render.js'
 import {syncWithLS} from "../storage/localStorage.js";
+import { initAnswerCheckerListeners } from '../listeners/answers.js'
+import { initInfoClickListeners } from '../listeners/info.js'
+import { initFavoriteCheckerListeners } from '../listeners/favorites.js'
 
 // Фильтр заданий по их ID
 export const filterById = (tasks, id) => tasks.filter(task => task.id.includes(id))
 
 // Фильтр заданий по номеру из КИМ
-export const filterByNumberOfOge = (tasks, number) => tasks.filter(task => task.number_of_oge === number)
+export const filterByNumberOfOge = (tasks, number) => tasks.filter(task => String(task.number_of_oge) === String(number))
 
 // Фильтр заданий по избранным
 export const filterByFavorite = (tasks, isFavorite=null) => {
@@ -29,7 +32,7 @@ export function filterListener() { // функция, которая считы�
     const filterSolved = document.querySelector('input[name="isSolved"]:checked')
     const filterFavorite = document.querySelector('input[name="isFavorite"]:checked')
 
-    const filterSelectValue = +filterSelect.value
+    const filterSelectValue = filterSelect.value
 
     let filterSolvedValue = filterSolved.value
     if (filterSolvedValue === 'all') {
@@ -50,7 +53,7 @@ export function filterListener() { // функция, которая считы�
     }
 
     // Применяем все фильтры по очереди для пересечения результатов
-    window.filteredTasks = Number.isNaN(filterSelectValue)
+    window.filteredTasks = filterSelectValue === 'all'
         ? structuredClone(window.currentSubjectTasks)
         : filterByNumberOfOge(window.currentSubjectTasks, filterSelectValue)
     window.filteredTasks = filterBySolved(window.filteredTasks, filterSolvedValue)
@@ -58,6 +61,9 @@ export function filterListener() { // функция, которая считы�
 
     render(window.filteredTasks)
     window.filteredTasks = syncWithLS(window.filteredTasks)
+    initAnswerCheckerListeners(window.filteredTasks)
+    initInfoClickListeners()
+    initFavoriteCheckerListeners(window.filteredTasks)
     // console.log(window.filteredTasks, window.currentSubjectTasks)
 }
 
@@ -65,4 +71,7 @@ export function filterReseter() {
     window.filteredTasks = structuredClone(window.currentSubjectTasks)
     render(window.filteredTasks)
     window.filteredTasks = syncWithLS(window.filteredTasks)
+    initAnswerCheckerListeners(window.filteredTasks)
+    initInfoClickListeners()
+    initFavoriteCheckerListeners(window.filteredTasks)
 }

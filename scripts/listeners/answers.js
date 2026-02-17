@@ -12,7 +12,8 @@ export function initAnswerCheckerListeners(tasks) {
             inputValues[i] = event.target.value
         })
         answerButtons[i].addEventListener('click', (event) => { // // при клике проверяем ответ пользователя и обновляем статус задания
-            if (inputValues[i].toLowerCase().trim() === tasks[i].correct_answer.toLowerCase().trim()) {
+            const isSolved = inputValues[i].toLowerCase().trim() === tasks[i].correct_answer.toLowerCase().trim()
+            if (isSolved) {
                 window.updateTask(tasks, {
                     ...tasks[i],
                     is_solved: true,
@@ -25,6 +26,15 @@ export function initAnswerCheckerListeners(tasks) {
                 })
                 window.updateIsSolvedUI(taskStatuses[i], false)
             }
+            tasks[i].is_solved = isSolved
+            const sourceTask = window.currentSubjectTasks.find((task) => task.id === tasks[i].id)
+            if (sourceTask) {
+                sourceTask.is_solved = isSolved
+            }
+            if (typeof window.filterListener === 'function') {
+                window.filterListener()
+            }
         })
     }
 }
+
